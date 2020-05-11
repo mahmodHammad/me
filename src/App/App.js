@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import { link, BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./../shared/Navbar/Navbar";
 import Home from "../pages/Home/Home"
+import Projects from "../pages/Projects/Project"
 // #FFC107 light
 export default class App extends Component {
   state = {
@@ -94,6 +95,7 @@ export default class App extends Component {
             className="App"
             style={{ background: theme.palette.background.default }}
           >
+            
             <BrowserRouter basename={process.env.PUBLIC_URL}>
               <Navbar />
               
@@ -107,7 +109,7 @@ export default class App extends Component {
                     />
                     )}
                     />
-                {/* <Route exact path="/feedback" component={Feedback} /> */}
+                <Route exact path="/Projects" component={Projects} />
                 
               </Switch>
             </BrowserRouter>
