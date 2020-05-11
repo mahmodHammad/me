@@ -8,7 +8,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Button from "@material-ui/core/Button";
 import { link, BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./../shared/Navbar/Navbar";
-
+import Home from "../pages/Home/Home"
 // #FFC107 light
 export default class App extends Component {
   state = {
@@ -96,20 +96,20 @@ export default class App extends Component {
           >
             <BrowserRouter basename={process.env.PUBLIC_URL}>
               <Navbar />
-
-              {/* <Switch>
+              
+              <Switch>
                 <Route
                   exact
                   path="/"
                   render={props => (
-                    <Communities
+                    <Home
                       {...props}
                     />
                     )}
                     />
-                <Route exact path="/feedback" component={Feedback} />
+                {/* <Route exact path="/feedback" component={Feedback} /> */}
                 
-              </Switch> */}
+              </Switch>
             </BrowserRouter>
           </div>
         </MuiThemeProvider>

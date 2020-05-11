@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,36 +11,34 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
 import MenuIcon from "@material-ui/icons/Menu";
 
-
 const useStyles = makeStyles(theme => ({
   logo: {
     flexGrow: 1,
     justifyContent: "left",
     fontWeight: "bold",
-    marginLeft:-5
+    marginLeft: -5
   },
-  nav:{background:"#aa11"},
-  navbar:{background:"#00f"},
+  nav: { background: "#eeea" },
+  navbar: { background: "#00f" },
   study: {
     padding: "2px 8px",
     // fontSize: "0.7rem",
-    marginRight:3
+    marginRight: 3
   },
-  Icon:{
+  Icon: {
     color: "#eee",
-    marginRight: -4,
-
-  },
-//   "@media (max-width: 600px)": {
-//     study: {
-//       fontSize: "0.6rem",
-//       padding: "2px 6px"
-//     },
-//     logoText: { fontSize: "0.8rem" },
-//     logo:{
-//       marginLeft:-10
-//     }  
-//   }
+    marginRight: -4
+  }
+  //   "@media (max-width: 600px)": {
+  //     study: {
+  //       fontSize: "0.6rem",
+  //       padding: "2px 6px"
+  //     },
+  //     logoText: { fontSize: "0.8rem" },
+  //     logo:{
+  //       marginLeft:-10
+  //     }
+  //   }
 }));
 
 // will be deprecated XXX
@@ -74,16 +72,12 @@ export default function Navbar({
   return (
     <div>
       <HideOnScroll {...props}>
-        <AppBar className={classes.nav} >
-          <Toolbar variant="dense" className={classes.nav}>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={() => setopen(!open)}
-            >
-              <MenuIcon />
-            </IconButton>
+        <AppBar
+          disableGutters={true}
+          color="transparent"
+          className={classes.nav}
+        >
+          <Toolbar className={classes.nav}>
             <div className={classes.logo}>
               <Button color="inherit" component={Link} to="/" size="large">
                 <Typography
@@ -99,7 +93,7 @@ export default function Navbar({
               </Button>
             </div>
             <Button
-              size="small"
+              size="large"
               className={classes.study}
               variant="outlined"
               color="secondary"
@@ -108,7 +102,7 @@ export default function Navbar({
             >
               My Projects
             </Button>
-           </Toolbar>
+          </Toolbar>
         </AppBar>
       </HideOnScroll>
 
