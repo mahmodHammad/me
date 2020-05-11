@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sidebar from "./Sidebar/Sidebar";
+// import Sidebar from "./Sidebar/Sidebar";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -10,7 +10,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
 import MenuIcon from "@material-ui/icons/Menu";
-import FormatQuoteIcon from "@material-ui/icons/FormatQuote";
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,38 +19,33 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     marginLeft:-5
   },
+  nav:{background:"#aa11"},
+  navbar:{background:"#00f"},
   study: {
     padding: "2px 8px",
-    fontSize: "0.7rem",
+    // fontSize: "0.7rem",
     marginRight:3
-  },
-  wiki: {
-    marginLeft: 3,
-    color: "#eee",
-    fontSize: 15,
-    fontWeight: "bold",
-    fontFamily: "Linux Libertine Georgia Times serif"
   },
   Icon:{
     color: "#eee",
     marginRight: -4,
 
   },
-  "@media (max-width: 600px)": {
-    study: {
-      fontSize: "0.6rem",
-      padding: "2px 6px"
-    },
-    logoText: { fontSize: "0.8rem" },
-    logo:{
-      marginLeft:-10
-    }  
-  }
+//   "@media (max-width: 600px)": {
+//     study: {
+//       fontSize: "0.6rem",
+//       padding: "2px 6px"
+//     },
+//     logoText: { fontSize: "0.8rem" },
+//     logo:{
+//       marginLeft:-10
+//     }  
+//   }
 }));
 
 // will be deprecated XXX
-let year = "Asu";
-let department = "Engineer";
+let year = "Mahmoud";
+let department = "Hammad";
 // XXXXXXXXXXXXXXXXXXXXXX
 
 function HideOnScroll(props) {
@@ -75,23 +69,13 @@ export default function Navbar({
   getCommunity,
   props
 }) {
-  // useEfect will not help , it will not takeEfect if the user selected his dof3a,
-  // because there's no rerendering on the selection action
-  let comm = localStorage.getItem("community");
-  if (comm) {
-    let dof = comm.split("/")[1];
-    let dofsp = dof.split(" ");
-    year = dofsp[0];
-    department = dofsp[1];
-  }
-
   const [open, setopen] = useState(false);
   const classes = useStyles();
   return (
     <div>
       <HideOnScroll {...props}>
-        <AppBar>
-          <Toolbar variant="dense">
+        <AppBar className={classes.nav} >
+          <Toolbar variant="dense" className={classes.nav}>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -120,38 +104,22 @@ export default function Navbar({
               variant="outlined"
               color="secondary"
               component={Link}
-              to="/nerds"
+              to="/projects"
             >
-              Study Room
+              My Projects
             </Button>
-            <IconButton
-              size="small"
-              className={classes.wiki}
-              component={Link}
-              to="/wiki"
-            >
-              W
-            </IconButton>
-            <IconButton
-              size="small"
-              className={classes.Icon}
-              component={Link}
-              to="/scholar"
-            >
-              <FormatQuoteIcon />
-            </IconButton>
-          </Toolbar>
+           </Toolbar>
         </AppBar>
       </HideOnScroll>
 
-      <Sidebar
+      {/* <Sidebar
         open={open}
         setopen={setopen}
         todo={todo}
         removeFromTodo={removeFromTodo}
         communities={communities}
         getCommunity={getCommunity}
-      />
+      /> */}
     </div>
   );
 }
