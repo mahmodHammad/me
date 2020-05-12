@@ -1,3 +1,6 @@
+// logo to the left
+// projects to the right -> click navigate to home then prjects
+// contact to the right -> click navigate to the home then contact
 import React, { useState } from "react";
 // import Sidebar from "./Sidebar/Sidebar";
 import AppBar from "@material-ui/core/AppBar";
@@ -18,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     marginLeft: -5
   },
-  nav: { background: "#eeea" },
+  nav: { background: "#424242" },
   navbar: { background: "#00f" },
   study: {
     padding: "2px 8px",

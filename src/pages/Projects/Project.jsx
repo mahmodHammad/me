@@ -35,7 +35,11 @@ export default function Navbar({}) {
       <Typography align="center" variant="h2" component="h1" gutterBottom color="primary">
        My Projects
       </Typography>
-
+      <Typography align="center" variant="h2" component="h1" gutterBottom color="primary">
+       My Projects
+      </Typography>      <Typography align="center" variant="h2" component="h1" gutterBottom color="primary">
+       My Projects
+      </Typography>
     </div>
   );
 }

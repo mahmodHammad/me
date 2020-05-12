@@ -8,14 +8,14 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Button from "@material-ui/core/Button";
 import { link, BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./../shared/Navbar/Navbar";
-import Home from "../pages/Home/Home"
-import Projects from "../pages/Projects/Project"
+import Home from "../pages/Home/Home";
+import Projects from "../pages/Projects/Project";
 // #FFC107 light
 export default class App extends Component {
   state = {
     cutumeTheme: {
       primary: {
-        main: "#333"
+        main: "#999"
       },
       secondary: {
         light: "#fff",
@@ -23,7 +23,7 @@ export default class App extends Component {
         contrastText: "#000"
       },
       background: {
-        default: "#fefaff"
+        default: "#000"
       },
       success: {
         main: "#43ff54"
@@ -95,22 +95,12 @@ export default class App extends Component {
             className="App"
             style={{ background: theme.palette.background.default }}
           >
-            
             <BrowserRouter basename={process.env.PUBLIC_URL}>
               <Navbar />
-              
+
               <Switch>
-                <Route
-                  exact
-                  path="/"
-                  render={props => (
-                    <Home
-                      {...props}
-                    />
-                    )}
-                    />
+                <Route exact path="/" render={props => <Home {...props} />} />
                 <Route exact path="/Projects" component={Projects} />
-                
               </Switch>
             </BrowserRouter>
           </div>
