@@ -19,17 +19,13 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     justifyContent: "left",
     fontWeight: "bold",
-    marginLeft: -5
   },
   nav: { background: theme.palette.navbar.default },
   study: {
-    padding: "2px 8px",
+    padding: "2px 10px",
+    margin:2,
+    marginLeft:5
     // fontSize: "0.7rem",
-    marginRight: 3
-  },
-  Icon: {
-    color: "#eee",
-    marginRight: -4
   }
   //   "@media (max-width: 600px)": {
   //     study: {
@@ -62,14 +58,7 @@ function HideOnScroll(props) {
   );
 }
 
-export default function Navbar({
-  todo,
-  removeFromTodo,
-  communities,
-  getCommunity,
-  props
-}) {
-  const [open, setopen] = useState(false);
+export default function Navbar({ props }) {
   const classes = useStyles();
   return (
     <div>
@@ -97,25 +86,25 @@ export default function Navbar({
             <Button
               size="large"
               className={classes.study}
+              color="primary"
+              component="a"
+              href="#contact"
+            >
+            contact
+            </Button>
+            <Button
+              size="large"
+              className={classes.study}
               variant="outlined"
               color="secondary"
-              component={Link}
-              to="/projects"
+              component="a"
+              href="#projects"
             >
               My Projects
             </Button>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-
-      {/* <Sidebar
-        open={open}
-        setopen={setopen}
-        todo={todo}
-        removeFromTodo={removeFromTodo}
-        communities={communities}
-        getCommunity={getCommunity}
-      /> */}
     </div>
   );
 }

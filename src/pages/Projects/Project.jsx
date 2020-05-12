@@ -13,7 +13,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop:120,
     padding: 20
   }
   //   "@media (max-width: 600px)": {

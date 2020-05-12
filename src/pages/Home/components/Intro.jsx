@@ -7,7 +7,6 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: 120,
     padding: 20
   }
 }));
@@ -16,14 +15,17 @@ export default function Navbar() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography
+     <Typography
         align="center"
         variant="h3"
         component="h1"
         gutterBottom
         color="primary"
       >
-        Projects
+        Full-stack web developer
+      </Typography>
+      <Typography align="center" variant="h6" component="h2" color="primary">
+        I design and code beautifully simple things, and I love what I do.
       </Typography>
     </div>
   );
