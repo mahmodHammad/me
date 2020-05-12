@@ -7,7 +7,8 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   root: {
-      background:theme.palette.footer.default,
+    background: theme.palette.footer.bg,
+    color: theme.palette.footer.txt,
     padding: 20
   }
 }));
@@ -16,15 +17,8 @@ export default function Navbar() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography
-        align="center"
-        variant="body1"
-        gutterBottom
-        color="secondary"
-      >
-       
-				© 2020 Mahmoud Hammad. All rights reserved.
-			 
+      <Typography align="center" variant="body1" gutterBottom >
+        © 2020 Mahmoud Hammad. All rights reserved.
       </Typography>
     </div>
   );

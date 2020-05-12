@@ -25,12 +25,12 @@ export default class App extends Component {
       background: {
         default: "#fafafa"
       },
-      txt:{
-        title:"#333",
-        body:"#666"
+      txt: {
+        title: "#333",
+        body: "#666"
       },
-      navbar:{default:"#fff"},
-      footer:{default:"#222"},
+      navbar: { default: "#fff" },
+      footer: { bg: "#171717", txt: "#FFC107 " },
       success: {
         main: "#43ff54"
       },
@@ -108,7 +108,7 @@ export default class App extends Component {
                 <Route exact path="/" render={props => <Home {...props} />} />
                 <Route exact path="/Projects" component={Projects} />
               </Switch>
-              <Footer/>
+              <Footer />
             </BrowserRouter>
           </div>
         </MuiThemeProvider>

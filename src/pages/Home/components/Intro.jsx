@@ -41,27 +41,39 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 4,
     transition: "ease-in-out 0.2s",
     "&:hover": {
-      padding: 0,
+      padding: 0
     }
   },
   "@media (max-width: 600px)": {
-    root: {
-      padding: 0
-    },
     header: {
       fontSize: "2.4rem",
-      marginTop: 10
     },
     body: {
       fontSize: "1.3rem"
     },
     button: {
-      marginTop: 20,
-      marginBottom: 40,
       padding: "8px 22px",
       fontSize: "0.8rem"
     }
   },
+  "@media (max-width:  960px)": {
+    root: {
+      padding: 20
+    },
+    header: {
+      fontSize: "2.8rem",
+      marginTop: 10
+    },
+    body: {
+      fontSize: "1.6rem"
+    },
+    button: {
+      padding: "10px 24px",
+      fontSize: "1rem",
+      marginBottom: 60
+    }
+  },
+
   "@media (max-width: 1280px)": {
     exsp: {
       display: "none"
@@ -85,7 +97,7 @@ export default function Navbar() {
         <Typography className={classes.body} variant="h6" component="h2">
           Full-stack web developer from Egypt.{" "}
           <span className={classes.exsp}>
-            <br/>
+            <br />
           </span>
           I create cutom websites to help businesses do better online
         </Typography>
