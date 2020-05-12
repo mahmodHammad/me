@@ -5,6 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
+import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
@@ -18,19 +19,14 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingTop: 120,
-    padding: 20
-  }
-  //   "@media (max-width: 600px)": {
-  //     study: {
-  //       fontSize: "0.6rem",
-  //       padding: "2px 6px"
-  //     },
-  //     logoText: { fontSize: "0.8rem" },
-  //     logo:{
-  //       marginLeft:-10
-  //     }
-  //   }
+    margin:20,
+    paddingTop: 100,
+  },
+    "@media (max-width: 600px)": {
+     root:{
+      margin:0,
+     }
+    }
 }));
 
 export default function Navbar({
@@ -43,15 +39,17 @@ export default function Navbar({
   const classes = useStyles();
   return (
     <div className={classes.root}>
-        <Intro/>
-      <Divider variant="middle" />
-      <About />
-      <Divider variant="middle" />
+      <Container maxWidth="lg">
+        <Intro />
+        <Divider variant="middle" />
+        <About />
+        <Divider variant="middle" />
 
-      <Projects />
-      <Divider variant="middle" />
+        <Projects />
+        <Divider variant="middle" />
 
-      <Contact />
+        <Contact />
+      </Container>
     </div>
   );
 }

@@ -19,8 +19,8 @@ export default class App extends Component {
         main: "#333"
       },
       secondary: {
-        light: "#fff",
-        main: "#FFA000",
+        light: "#FFC409 ",
+        main: "#F89500",
         contrastText: "#000"
       },
       background: {
