@@ -21,8 +21,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     marginLeft: -5
   },
-  nav: { background: "#424242" },
-  navbar: { background: "#00f" },
+  nav: { background: theme.palette.navbar.default },
   study: {
     padding: "2px 8px",
     // fontSize: "0.7rem",

@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
+import Divider from "@material-ui/core/Divider";
 import MenuIcon from "@material-ui/icons/Menu";
 
 import About from "./components/About";
@@ -53,8 +54,13 @@ export default function Navbar({
       <Typography align="center" variant="h6" component="h2" color="primary">
         I design and code beautifully simple things, and I love what I do.
       </Typography>
+      <Divider variant="middle" />
       <About />
+      <Divider variant="middle" />
+
       <Projects />
+      <Divider variant="middle" />
+
       <Contact />
     </div>
   );
