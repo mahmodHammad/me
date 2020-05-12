@@ -17,15 +17,7 @@ export default function Navbar() {
   const classes = useStyles();
   return (
     <div id="projects" className={classes.root}>
-      <Typography
-        align="center"
-        variant="h3"
-        component="h1"
-        gutterBottom
-        color="primary"
-      >
-        Projects
-      </Typography>
+    
     </div>
   );
 }

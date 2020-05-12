@@ -14,15 +14,7 @@ export default function Navbar() {
   const classes = useStyles();
   return (
     <div id="contact"className={classes.root}>
-      <Typography
-        align="center"
-        variant="h3"
-        component="h1"
-        gutterBottom
-        color="primary"
-      >
-        Contact Me
-      </Typography>
+
     </div>
   );
 }

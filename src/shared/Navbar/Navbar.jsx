@@ -1,30 +1,32 @@
 // logo to the left
 // projects to the right -> click navigate to home then prjects
 // contact to the right -> click navigate to the home then contact
-import React, { useState } from "react";
+import React from "react";
 // import Sidebar from "./Sidebar/Sidebar";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
+import Hidden from "@material-ui/core/Hidden";
 import { Link } from "react-router-dom";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
+
+import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles(theme => ({
   logo: {
     flexGrow: 1,
     justifyContent: "left",
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   nav: { background: theme.palette.navbar.default },
   study: {
     padding: "2px 10px",
-    margin:2,
-    marginLeft:5
+    margin: 2,
+    marginLeft: 5
     // fontSize: "0.7rem",
   }
   //   "@media (max-width: 600px)": {
@@ -64,7 +66,6 @@ export default function Navbar({ props }) {
     <div>
       <HideOnScroll {...props}>
         <AppBar
-          disableGutters={true}
           color="transparent"
           className={classes.nav}
         >
@@ -83,25 +84,38 @@ export default function Navbar({ props }) {
                 </Typography>
               </Button>
             </div>
-            <Button
-              size="large"
-              className={classes.study}
-              color="primary"
-              component="a"
-              href="#contact"
-            >
-            contact
-            </Button>
-            <Button
-              size="large"
-              className={classes.study}
-              variant="outlined"
-              color="secondary"
-              component="a"
-              href="#projects"
-            >
-              My Projects
-            </Button>
+            <Hidden smDown={true}>
+              <Button
+                size="large"
+                className={classes.study}
+                color="primary"
+                component="a"
+                href="#contact"
+              >
+                contact
+              </Button>
+              <Button
+                size="large"
+                className={classes.study}
+                variant="outlined"
+                color="secondary"
+                component="a"
+                href="#projects"
+              >
+                My Projects
+              </Button>
+            </Hidden>
+
+            <Hidden mdUp={true}>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={() => console.log("open ya semem")}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Hidden>
           </Toolbar>
         </AppBar>
       </HideOnScroll>

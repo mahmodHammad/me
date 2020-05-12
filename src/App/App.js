@@ -5,8 +5,7 @@ import { configureAnchors } from "react-scrollable-anchor";
 // Mui Components -------------------------------
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Button from "@material-ui/core/Button";
-import { link, BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./../shared/Navbar/Navbar";
 import Footer from "./../shared/Footer/Footer";
 import Home from "../pages/Home/Home";
@@ -25,6 +24,10 @@ export default class App extends Component {
       },
       background: {
         default: "#fafafa"
+      },
+      txt:{
+        title:"#333",
+        body:"#666"
       },
       navbar:{default:"#fff"},
       footer:{default:"#222"},
