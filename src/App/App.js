@@ -30,7 +30,7 @@ export default class App extends Component {
         body: "#666"
       },
       navbar: { default: "#fff" },
-      footer: { bg: "#171717", txt: "#FFC107 " },
+      footer: { bg: "#2b2b2b", txt: "#FFC107" },
       success: {
         main: "#43ff54"
       },

@@ -91,7 +91,7 @@ export default function Navbar({ props }) {
                 variant="outlined"
                 color="secondary"
                 component="a"
-                href="/#projects"
+                href={`/${process.env.PUBLIC_URL}/#projects`}
               >
                 My Projects
               </Button>

@@ -13,7 +13,7 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
 import MenuIcon from "@material-ui/icons/Menu";
 import AllProjects from "../../config/Projects";
-import OpenInNewIcon from '@material-ui/icons/OpenInNew';
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 
 import GH from "../../Icons/GH";
 const useStyles = makeStyles(theme => ({
@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     textAlign: "center",
     margin: "auto",
-    borderRadius:5
+    borderRadius: 5
   },
   header: {
     fontSize: "2.8rem",
@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   logoIcon: {
     width: 50,
     height: 50,
-    margin:"0 -15px -15px 0"
+    margin: "0 -15px -15px 0"
   },
   button: {
     textDecoration: "none",
@@ -91,19 +91,18 @@ export default function Projec({ match }) {
 
             {info.links.gitHub !== undefined ? (
               <IconButton
-              component={Link}
-              href={info.links.gitHub}
-              target="_blank"
-              
+                component={Link}
+                href={info.links.gitHub}
+                target="_blank"
               >
                 <GH
-              className={classes.logoIcon}
-                color="primary"
+                  className={classes.logoIcon}
+                  color="primary"
                   fontSize="large"
                 />
               </IconButton>
             ) : (
-              <span>sssssssssssssss</span>
+              <span></span>
             )}
             {info.links.gitHub !== undefined ? (
               <Button
@@ -114,7 +113,7 @@ export default function Projec({ match }) {
                 fontSize="large"
                 color="secondary"
                 variant="contained"
-                startIcon={<OpenInNewIcon/>}
+                startIcon={<OpenInNewIcon />}
               >
                 View The Website
               </Button>

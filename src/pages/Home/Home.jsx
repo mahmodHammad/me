@@ -10,7 +10,6 @@ import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact";
 const useStyles = makeStyles(theme => ({
   root: {
-    margin: 20,
     paddingTop: 100
   },
   "@media (max-width: 600px)": {
@@ -37,8 +36,8 @@ export default function Navbar({
         {/* <Divider variant="middle" /> */}
         <Projects />
         {/* <Divider variant="middle" /> */}
-        <Contact />
       </Container>
+        <Contact />
     </div>
   );
 }
