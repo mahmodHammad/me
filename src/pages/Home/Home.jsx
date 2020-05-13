@@ -6,7 +6,7 @@ import Divider from "@material-ui/core/Divider";
 
 import Intro from "./components/Intro";
 import Skills from "./components/Skills";
-import Projects from "./components/Projects";
+import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact";
 const useStyles = makeStyles(theme => ({
   root: {

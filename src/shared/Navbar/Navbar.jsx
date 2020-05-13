@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     justifyContent: "left",
   },
-  logo:{height:56},
+  logo:{height:58,margin:3},
   nav: { background: theme.palette.navbar.default },
   study: {
     padding: "2px 10px",

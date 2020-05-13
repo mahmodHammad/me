@@ -13,7 +13,7 @@ import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-
+ import ProjectCard from "./ProjectCard"
 const useStyles = makeStyles(theme => ({
   root: {
     marginTop: 100
@@ -42,41 +42,16 @@ export default function Navbar() {
         </Link>
       </Typography>
 
-      <Grid container>
-        <Grid item xs={12} md={6}>
-          <Card className={classes.card}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                alt="Contemplative Reptile"
-                height="240"
-                image={mooc}
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  MoocHub
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary">
-                Link
-              </Button>
-              <Button size="small" color="primary">
-                Github
-              </Button>
-              <Button size="small" color="primary">
-                Learn More
-              </Button>
-            </CardActions>
-          </Card>
+      <Grid container spacing={4} >
+      <ProjectCard info={{img:Asu , title:"AsuEngineer" , body:" Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"}}/>
+      <ProjectCard info={{img:mooc , title:"MoocHub" , body:" Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"}}/>
+      <ProjectCard info={{img:Asu , title:"AsuEngineer" , body:" Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"}}/>
+      <ProjectCard info={{img:Asu , title:"AsuEngineer" , body:" Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"}}/>
+      <ProjectCard info={{img:Asu , title:"AsuEngineer" , body:" Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"}}/>
+       <ProjectCard info={{img:mooc , title:"MoocHub" , body:" Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"}}/>
+       <ProjectCard info={{img:mooc , title:"MoocHub" , body:" Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"}}/>
+     
         </Grid>
-      </Grid>
     </div>
   );
 }
