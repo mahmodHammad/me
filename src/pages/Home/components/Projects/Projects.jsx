@@ -38,6 +38,7 @@ export default function Navbar() {
   const classes = useStyles();
   return (
     <div id="projects" className={classes.root}>
+
       <Typography variant="h1" gutterBottom className={classes.header}>
         My Recent Work
       </Typography>
