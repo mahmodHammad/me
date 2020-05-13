@@ -30,14 +30,9 @@ export default class App extends Component {
         body: "#666"
       },
       navbar: { default: "#fff" },
-      footer: { bg: "#171717", txt: "#FFC107 " },
-      success: {
-        main: "#43ff54"
-      },
-      error: {
-        main: "#f44336"
-      }
-    }
+      footer: { bg: "#2b2b2b", txt: "#FFC107" }
+    },
+    isLightMode: true
   };
   theme = createMuiTheme({
     palette: this.state.cutumeTheme
@@ -53,22 +48,30 @@ export default class App extends Component {
   //     palette: this.state.cutumeTheme
   //   });
   // };
+  footer: { bg: "#2b2b2b", txt: "#FFC107" }
 
-  // changeTheme = (
-  //   main = this.state.cutumeTheme.primary.main,
-  //   sec = this.state.cutumeTheme.secondary.main,
-  //   bg = this.state.cutumeTheme.background.default
-  // ) => {
-  //   let oldTheme = { ...this.state.cutumeTheme };
-  //   oldTheme.primary.main = main;
-  //   oldTheme.secondary.main = sec;
-  //   oldTheme.background.default = bg;
-  //   this.setState({ cutumeTheme: oldTheme });
+  changeTheme = () => {
+    const islight = this.state.isLightMode;
+    let oldTheme = { ...this.state.cutumeTheme };
+    if (islight) {
+      oldTheme.primary.main = "#eee";
+      oldTheme.navbar.default = "#444";
+      oldTheme.background.default = "#999";
+      oldTheme.footer.bg = "#000";
+    }
+    else{
+      oldTheme.primary.main = "#333";
+      oldTheme.navbar.default = "#fff";
+      oldTheme.background.default = "#fafafa";
+      oldTheme.footer.bg = "#2b2b2b";
+    }
+    this.setState({ cutumeTheme: oldTheme });
 
-  //   this.theme = createMuiTheme({
-  //     palette: this.state.cutumeTheme
-  //   });
-  // };
+    this.theme = createMuiTheme({
+      palette: this.state.cutumeTheme
+    });
+    this.setState({ isLightMode: !this.state.isLightMode });
+  };
 
   clearLocalStorage = () => {
     window.localStorage.clear();
@@ -102,11 +105,11 @@ export default class App extends Component {
             style={{ background: theme.palette.background.default }}
           >
             <BrowserRouter basename={process.env.PUBLIC_URL}>
-              <Navbar />
+              <Navbar themeChange={this.changeTheme} />
 
               <Switch>
                 <Route exact path="/" render={props => <Home {...props} />} />
-                <Route exact path="/Projects" component={Projects} />
+                <Route exact path="/Project/:id" component={Projects} />
               </Switch>
               <Footer />
             </BrowserRouter>

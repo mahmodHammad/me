@@ -8,27 +8,30 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import { Link } from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
 
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 
+import Dropdwon from "./components/Dropdown" 
+import Brightness4Icon from "@material-ui/icons/Brightness4";
+
+import Logo from "./logo.png";
 const useStyles = makeStyles(theme => ({
-  logo: {
+  logoContainer: {
     flexGrow: 1,
-    justifyContent: "left",
-    fontWeight: "bold"
+    justifyContent: "left"
   },
+  logo: { height: 58, margin: 3 },
   nav: { background: theme.palette.navbar.default },
   study: {
     padding: "2px 10px",
     margin: 2,
     marginLeft: 5
     // fontSize: "0.7rem",
-  }
+  },
+  themeicon:{marginLeft:4}
   //   "@media (max-width: 600px)": {
   //     study: {
   //       fontSize: "0.6rem",
@@ -40,11 +43,6 @@ const useStyles = makeStyles(theme => ({
   //     }
   //   }
 }));
-
-// will be deprecated XXX
-let year = "Mahmoud";
-let department = "Hammad";
-// XXXXXXXXXXXXXXXXXXXXXX
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -60,37 +58,26 @@ function HideOnScroll(props) {
   );
 }
 
-export default function Navbar({ props }) {
+export default function Navbar({ props ,themeChange}) {
   const classes = useStyles();
   return (
     <div>
       <HideOnScroll {...props}>
-        <AppBar
-          color="transparent"
-          className={classes.nav}
-        >
+        <AppBar color="transparent" className={classes.nav}>
           <Toolbar className={classes.nav}>
-            <div className={classes.logo}>
-              <Button color="inherit" component={Link} to="/" size="large">
-                <Typography
-                  align="left"
-                  color="inherit"
-                  className={classes.logoText}
-                >
-                  {year}
-                </Typography>
-                <Typography color="secondary" className={classes.logoText}>
-                  {department}
-                </Typography>
-              </Button>
+            <div className={classes.logoContainer}>
+              <IconButton color="inherit" component={Link} to="/" size="large">
+                <img className={classes.logo} src={Logo} alt="Mahmoud Hammad" />
+              </IconButton>
             </div>
+           
             <Hidden smDown={true}>
               <Button
                 size="large"
                 className={classes.study}
                 color="primary"
                 component="a"
-                href="#contact"
+                href="/#contact"
               >
                 contact
               </Button>
@@ -100,22 +87,32 @@ export default function Navbar({ props }) {
                 variant="outlined"
                 color="secondary"
                 component="a"
-                href="#projects"
+                // href={`/${process.env.PUBLIC_URL}/#projects`}
+                href={`/#projects`}
               >
                 My Projects
               </Button>
             </Hidden>
 
-            <Hidden mdUp={true}>
-              <IconButton
+
+            <IconButton
+                className={classes.themeicon}
                 color="inherit"
                 aria-label="open drawer"
                 edge="start"
-                onClick={() => console.log("open ya semem")}
+                onClick={themeChange}
               >
-                <MenuIcon />
+                <Brightness4Icon />
               </IconButton>
+
+
+            <Hidden mdUp={true}>
+             
+
+             <Dropdwon/>
             </Hidden>
+
+            
           </Toolbar>
         </AppBar>
       </HideOnScroll>
