@@ -88,7 +88,7 @@ export default function Navbar() {
               className={classes.secHeader}
               color="secondary"
             >
-              Technologies I use
+              Technologies I use:
             </Typography>
             <Typography variant="body1" className={classes.body}>
               React, Redux, Material-UI, Bootstrap4, jQuery
@@ -130,7 +130,7 @@ export default function Navbar() {
               className={classes.secHeader}
               color="secondary"
             >
-              Technologies I use
+              Technologies I use:
             </Typography>
             <Typography variant="body1" className={classes.body}>
               Express.js, MongoDb, Firebase
