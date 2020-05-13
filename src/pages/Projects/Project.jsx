@@ -36,10 +36,12 @@ const useStyles = makeStyles(theme => ({
   },
   body: {
     color: theme.palette.txt.body,
-    marginTop: 5,
-    textAlign: "center",
-    marginBottom: 30
+    marginTop: 30,
+    textAlign: "left"
   },
+  techUsedHeader: { color: theme.palette.txt.title, fontSize: "1.6rem" },
+  techUsed: { textAlign: "left", marginTop: 30, marginBottom: 50 },
+  tech: { color: theme.palette.txt.body, fontSize: "1rem" },
   logoIcon: {
     width: 50,
     height: 50,
@@ -121,14 +123,23 @@ export default function Projec({ match }) {
               <span></span>
             )}
             <img src={info.img} className={classes.img} alt="projImg" />
-            <Typography
-              align="center"
-              className={classes.body}
-              gutterBottom
-              variant="body1"
-            >
+            <Typography className={classes.body} gutterBottom variant="h5">
               {info.body}
             </Typography>
+            <div className={classes.techUsed}>
+              <Typography
+                className={classes.techUsedHeader}
+                gutterBottom
+                variant="h6"
+              >
+                Technologies used:
+              </Typography>
+              <ul>
+                {info.Technologies.map(t => (
+                  <li className={classes.tech}>{t}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         ) : (
           <h2>NO Thing to preview here!</h2>

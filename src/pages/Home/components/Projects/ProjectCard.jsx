@@ -51,7 +51,7 @@ export default function Navbar({ info }) {
               {info.title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {info.body}
+              {info.body.substring(0,100)+"..."}
             </Typography>
           </CardContent>
           {/* <Typography className={classes.tech}>{info.Technologies}</Typography> */}
