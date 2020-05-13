@@ -8,7 +8,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import { Link } from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
@@ -82,7 +81,7 @@ export default function Navbar({ props }) {
                 className={classes.study}
                 color="primary"
                 component="a"
-                href="#contact"
+                href="/#contact"
               >
                 contact
               </Button>
@@ -92,7 +91,7 @@ export default function Navbar({ props }) {
                 variant="outlined"
                 color="secondary"
                 component="a"
-                href="#projects"
+                href="/#projects"
               >
                 My Projects
               </Button>
