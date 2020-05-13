@@ -13,7 +13,8 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
 
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+
+import Dropdwon from "./components/Dropdown" 
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 
 import Logo from "./logo.png";
@@ -69,6 +70,7 @@ export default function Navbar({ props ,themeChange}) {
                 <img className={classes.logo} src={Logo} alt="Mahmoud Hammad" />
               </IconButton>
             </div>
+           
             <Hidden smDown={true}>
               <Button
                 size="large"
@@ -92,6 +94,7 @@ export default function Navbar({ props ,themeChange}) {
               </Button>
             </Hidden>
 
+
             <IconButton
                 className={classes.themeicon}
                 color="inherit"
@@ -104,14 +107,9 @@ export default function Navbar({ props ,themeChange}) {
 
 
             <Hidden mdUp={true}>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={() => console.log("open ya semem")}
-              >
-                <MenuIcon />
-              </IconButton>
+             
+
+             <Dropdwon/>
             </Hidden>
 
             
