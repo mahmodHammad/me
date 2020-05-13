@@ -8,6 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
+import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(theme => ({
@@ -17,11 +18,13 @@ const useStyles = makeStyles(theme => ({
   cardContainer: { textAlign: "center" },
   card: {
     marginTop: 10
-  },buttons:{
-      textAlign:"center",
-      margin:"auto"
-  },button:{
-      margin:"0 6px"
+  },
+  buttons: {
+    textAlign: "center",
+    margin: "auto"
+  },
+  button: {
+    margin: "0 6px"
   }
 }));
 
@@ -46,18 +49,24 @@ export default function Navbar({ info }) {
               {info.body}
             </Typography>
           </CardContent>
+          <Typography className={classes.tech}>{info.Technologies}</Typography>
+
+<Divider/>
+
         </CardActionArea>
-        <CardActions >
+        <CardActions>
           <div className={classes.buttons}>
-              <Button className={classes.button} size="small" color="secondary">
-                Visit Website 
-              </Button>
-              <Button  className={classes.button} size="small" color="secondary">
-                Github
-              </Button>
-              <Button className={classes.button} size="small" color="secondary">
-                Learn More
-              </Button>
+              {Object.keys(info.links).map(l=> <Button className={classes.button} component="a" target="_blank" href={info.links[l]} size="small" color="secondary">
+              {l}
+            </Button>) }
+           
+            {/* <Button className={classes.button} size="small" color="secondary">
+              Github
+            </Button> */}
+
+            <Button className={classes.button} size="small" color="secondary">
+              Learn More
+            </Button>
           </div>
         </CardActions>
       </Card>
