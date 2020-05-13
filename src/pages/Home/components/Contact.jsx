@@ -34,7 +34,8 @@ const useStyles = makeStyles(theme => ({
   buttonContainer: { textAlign: "center", marginTop: 20 },
   button: {
     color: theme.palette.secondary.main,
-    background: "#fff",
+    fontWeight:"bold",
+    background: "#fff1",
     "&:hover": {
       color: "#fff",
       background: theme.palette.secondary.main

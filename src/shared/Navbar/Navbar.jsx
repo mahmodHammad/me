@@ -14,14 +14,15 @@ import Slide from "@material-ui/core/Slide";
 
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import Brightness4Icon from "@material-ui/icons/Brightness4";
 
-import Logo from "./logo.png"
+import Logo from "./logo.png";
 const useStyles = makeStyles(theme => ({
   logoContainer: {
     flexGrow: 1,
-    justifyContent: "left",
+    justifyContent: "left"
   },
-  logo:{height:58,margin:3},
+  logo: { height: 58, margin: 3 },
   nav: { background: theme.palette.navbar.default },
   study: {
     padding: "2px 10px",
@@ -29,6 +30,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 5
     // fontSize: "0.7rem",
   },
+  themeicon:{marginLeft:4}
   //   "@media (max-width: 600px)": {
   //     study: {
   //       fontSize: "0.6rem",
@@ -40,11 +42,6 @@ const useStyles = makeStyles(theme => ({
   //     }
   //   }
 }));
-
-// will be deprecated XXX
-let year = "Mahmoud";
-let department = "Hammad";
-// XXXXXXXXXXXXXXXXXXXXXX
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -60,20 +57,17 @@ function HideOnScroll(props) {
   );
 }
 
-export default function Navbar({ props }) {
+export default function Navbar({ props ,themeChange}) {
   const classes = useStyles();
   return (
     <div>
       <HideOnScroll {...props}>
-        <AppBar
-          color="transparent"
-          className={classes.nav}
-        >
+        <AppBar color="transparent" className={classes.nav}>
           <Toolbar className={classes.nav}>
             <div className={classes.logoContainer}>
-              <Button color="inherit" component={Link} to="/" size="large">
-                <img className={classes.logo} src={Logo} alt="Mahmoud Hammad"/>
-              </Button>
+              <IconButton color="inherit" component={Link} to="/" size="large">
+                <img className={classes.logo} src={Logo} alt="Mahmoud Hammad" />
+              </IconButton>
             </div>
             <Hidden smDown={true}>
               <Button
@@ -91,11 +85,23 @@ export default function Navbar({ props }) {
                 variant="outlined"
                 color="secondary"
                 component="a"
-                href={`/${process.env.PUBLIC_URL}/#projects`}
+                // href={`/${process.env.PUBLIC_URL}/#projects`}
+                href={`/#projects`}
               >
                 My Projects
               </Button>
             </Hidden>
+
+            <IconButton
+                className={classes.themeicon}
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={themeChange}
+              >
+                <Brightness4Icon />
+              </IconButton>
+
 
             <Hidden mdUp={true}>
               <IconButton
@@ -107,6 +113,8 @@ export default function Navbar({ props }) {
                 <MenuIcon />
               </IconButton>
             </Hidden>
+
+            
           </Toolbar>
         </AppBar>
       </HideOnScroll>

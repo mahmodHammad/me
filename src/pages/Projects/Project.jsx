@@ -43,14 +43,13 @@ const useStyles = makeStyles(theme => ({
   techUsed: { textAlign: "left", marginTop: 30, marginBottom: 50 },
   tech: { color: theme.palette.txt.body, fontSize: "1rem" },
   logoIcon: {
-    width: 50,
-    height: 50,
-    margin: "0 -15px -15px 0"
+    width: 40,
+    height: 40,
   },
   button: {
     textDecoration: "none",
     color: "#fff",
-    margin: 30,
+    margin: "30px 20px",
     "&:hover": {
       textDecoration: "none"
     }
