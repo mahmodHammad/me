@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import ProjectCard from "./ProjectCard";
@@ -41,7 +42,7 @@ export default function Navbar() {
         My Recent Work
       </Typography>
       <Typography className={classes.body}>
-        Here are a few design projects I've worked on recently.{" "}
+        Here are a few design projects I've worked on recently.
         <span className={classes.hide}>
           <br />
         </span>
@@ -51,7 +52,7 @@ export default function Navbar() {
         </Link>
       </Typography>
 
-      <Grid justify="center" container spacing={4}>
+      <Grid justify="center" container spacing={2}>
         {fackProjects.map((e, index) => (
           <ProjectCard info={e} />
         ))}

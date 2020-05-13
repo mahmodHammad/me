@@ -106,7 +106,7 @@ export default class App extends Component {
 
               <Switch>
                 <Route exact path="/" render={props => <Home {...props} />} />
-                <Route exact path="/Projects" component={Projects} />
+                <Route exact path="/Project/:id" component={Projects} />
               </Switch>
               <Footer />
             </BrowserRouter>
