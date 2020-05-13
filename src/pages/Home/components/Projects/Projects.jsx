@@ -47,8 +47,8 @@ export default function Navbar() {
         <span className={classes.hide}>
           <br />
         </span>
-        Want to see more?
-        <Link href="#" color="secondary">
+        Want to see more?{" "}
+        <Link href="mailto:ma7mod.7ammad@gmail.com" color="secondary">
           Email me
         </Link>
       </Typography>
