@@ -7,8 +7,8 @@ import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
-import frontend from "./designer.svg";
-import backend from "./frontend.svg";
+import frontend from "../Assets/designer.svg";
+import backend from "../Assets/frontend.svg";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,8 +32,7 @@ const useStyles = makeStyles(theme => ({
     padding: "50px 50px"
   },
   item: {
-    margin: "30px auto",
-
+    margin: "30px auto"
   },
   logo: {
     marginBottom: 33
@@ -89,7 +88,7 @@ export default function Navbar() {
               className={classes.secHeader}
               color="secondary"
             >
-              FrameWorks, and Libraries:
+              Technologies I use
             </Typography>
             <Typography variant="body1" className={classes.body}>
               React, Redux, Material-UI, Bootstrap4, jQuery
@@ -97,7 +96,7 @@ export default function Navbar() {
           </Grid>
 
           {/* -------------------------------------------------------------- */}
-          
+
           <Grid
             className={`${classes.cardItem} ${classes.lastcardItem} `}
             item
@@ -131,7 +130,7 @@ export default function Navbar() {
               className={classes.secHeader}
               color="secondary"
             >
-              FrameWorks, and Libraries:
+              Technologies I use
             </Typography>
             <Typography variant="body1" className={classes.body}>
               Express.js, MongoDb, Firebase

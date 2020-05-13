@@ -16,19 +16,20 @@ import Slide from "@material-ui/core/Slide";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
+import Logo from "./logo.png"
 const useStyles = makeStyles(theme => ({
-  logo: {
+  logoContainer: {
     flexGrow: 1,
     justifyContent: "left",
-    fontWeight: "bold"
   },
+  logo:{height:56},
   nav: { background: theme.palette.navbar.default },
   study: {
     padding: "2px 10px",
     margin: 2,
     marginLeft: 5
     // fontSize: "0.7rem",
-  }
+  },
   //   "@media (max-width: 600px)": {
   //     study: {
   //       fontSize: "0.6rem",
@@ -70,18 +71,9 @@ export default function Navbar({ props }) {
           className={classes.nav}
         >
           <Toolbar className={classes.nav}>
-            <div className={classes.logo}>
+            <div className={classes.logoContainer}>
               <Button color="inherit" component={Link} to="/" size="large">
-                <Typography
-                  align="left"
-                  color="inherit"
-                  className={classes.logoText}
-                >
-                  {year}
-                </Typography>
-                <Typography color="secondary" className={classes.logoText}>
-                  {department}
-                </Typography>
+                <img className={classes.logo} src={Logo} alt="Mahmoud Hammad"/>
               </Button>
             </div>
             <Hidden smDown={true}>
