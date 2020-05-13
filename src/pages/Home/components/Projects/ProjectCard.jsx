@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
@@ -17,13 +17,18 @@ const useStyles = makeStyles(theme => ({
   cardContainer: { textAlign: "center" },
   card: {
     marginTop: 10
+  },buttons:{
+      textAlign:"center",
+      margin:"auto"
+  },button:{
+      margin:"0 6px"
   }
 }));
 
 export default function Navbar({ info }) {
   const classes = useStyles();
   return (
-    <Grid item className={classes.cardContainer} xs={12} md={6}>
+    <Grid item className={classes.cardContainer} xs={12} sm={9} md={6} lg={4}>
       <Card className={classes.card}>
         <CardActionArea>
           <CardMedia
@@ -42,16 +47,18 @@ export default function Navbar({ info }) {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Visit Website >
-          </Button>
-          <Button size="small" color="primary">
-            Github
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
+        <CardActions >
+          <div className={classes.buttons}>
+              <Button className={classes.button} size="small" color="secondary">
+                Visit Website 
+              </Button>
+              <Button  className={classes.button} size="small" color="secondary">
+                Github
+              </Button>
+              <Button className={classes.button} size="small" color="secondary">
+                Learn More
+              </Button>
+          </div>
         </CardActions>
       </Card>
     </Grid>
