@@ -61,7 +61,7 @@ export default function Navbar() {
           Get in touch
         </Typography>
         <Typography variant="h2" gutterBottom className={classes.body}>
-          i am interested in freelance opportunities, espacially ambitious or
+          I am interested in freelance opportunities, espacially ambitious or
           large projects.
           <span className={classes.hide}>
             <br />

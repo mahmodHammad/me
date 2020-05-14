@@ -10,7 +10,7 @@ import backend from "../Assets/frontend.svg";
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 30,
-    marginTop: 20
+    marginTop: 0
   },
   header: {
     fontSize: "1.6rem",
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   "@media (max-width: 600px)": {
     root: {
       padding: 10,
-      marginTop: 80
+      marginTop: 0
     },
     lastcardItem: {
       marginTop: 30

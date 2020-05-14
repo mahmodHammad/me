@@ -18,6 +18,8 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.txt.title
   },
   body: {
+    fontSize: "1.2rem",
+
     color: theme.palette.txt.body,
     marginTop: 5,
     textAlign: "center",
@@ -25,6 +27,9 @@ const useStyles = makeStyles(theme => ({
   },
   hide: { display: "none" },
   "@media (max-width: 600px)": {
+    body: {
+      fontSize: "1rem"
+    },
     hide: {
       display: "inline"
     },
@@ -38,7 +43,6 @@ export default function Navbar() {
   const classes = useStyles();
   return (
     <div id="projects" className={classes.root}>
-
       <Typography variant="h1" gutterBottom className={classes.header}>
         My Recent Work
       </Typography>
@@ -54,8 +58,8 @@ export default function Navbar() {
       </Typography>
 
       <Grid justify="center" container spacing={2}>
-        {fackProjects.map((e, index) => (
-          <ProjectCard info={e} />
+        {fackProjects.map(e => (
+          <ProjectCard key={e.id} info={e} />
         ))}
       </Grid>
     </div>

@@ -84,20 +84,20 @@ export default function Projec({ match }) {
             ) : (
               <span></span>
             )}
-            
-              <Button
-                className={classes.button}
-                component={Link}
-                href={info.links.visit}
-                target="_blank"
-                fontSize="large"
-                color="secondary"
-                variant="contained"
-                startIcon={<OpenInNewIcon />}
-              >
-                Visit The Website
-              </Button>
-         
+
+            <Button
+              className={classes.button}
+              component={Link}
+              href={info.links.visit}
+              target="_blank"
+              fontSize="large"
+              color="secondary"
+              variant="contained"
+              startIcon={<OpenInNewIcon />}
+            >
+              Visit The Website
+            </Button>
+
             <img src={info.img} className={classes.img} alt="projImg" />
             <Typography className={classes.body} gutterBottom variant="h5">
               {info.body}
@@ -112,7 +112,9 @@ export default function Projec({ match }) {
               </Typography>
               <ul>
                 {info.Technologies.map(t => (
-                  <li className={classes.tech}>{t}</li>
+                  <li key={t} className={classes.tech}>
+                    {t}
+                  </li>
                 ))}
               </ul>
             </div>

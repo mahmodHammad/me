@@ -7,7 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   cardContainer: { textAlign: "center" },
   card: {
     marginTop: 10,
-    background:theme.palette.card.bg
+    background: theme.palette.card.bg
   },
   buttons: {
     textAlign: "center",
@@ -28,16 +28,24 @@ const useStyles = makeStyles(theme => ({
   button: {
     margin: "0 6px"
   },
-  img:{
-  },contentHeader:{
-      fontWeight:"bolder"
+  img: {},
+  contentHeader: {
+    fontWeight: "bolder"
   }
 }));
 
 export default function Navbar({ info }) {
   const classes = useStyles();
   return (
-    <Grid item className={classes.cardContainer} xs={12} sm={9} md={6} lg={4}>
+    <Grid
+      key={info.id}
+      item
+      className={classes.cardContainer}
+      xs={12}
+      sm={9}
+      md={6}
+      lg={4}
+    >
       <Card className={classes.card}>
         <CardActionArea component={Link} to={`/project/${info.id}`}>
           <CardMedia
@@ -48,32 +56,60 @@ export default function Navbar({ info }) {
             title="Contemplative Reptile"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2" className="contentHeader">
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="h2"
+              className="contentHeader"
+            >
               {info.title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {info.body.substring(0,100)+"..."}
+              {info.body.substring(0, 100) + "..."}
             </Typography>
           </CardContent>
           {/* <Typography className={classes.tech}>{info.Technologies}</Typography> */}
-
         </CardActionArea>
-          <Divider />
+        <Divider />
         <CardActions>
           <div className={classes.buttons}>
-            {Object.keys(info.links).map(l => (
+            {info.links.visit !== undefined ? (
               <Button
                 className={classes.button}
                 component="a"
                 target="_blank"
-                href={info.links[l]}
+                href={info.links.visit}
                 size="small"
                 color="secondary"
               >
-                {l}
+                Visit Website
               </Button>
-            ))}
-            <Button component={Link} to={`/project/${info.id}`} className={classes.button} size="small" color="secondary">
+            ) : (
+              <span></span>
+            )}
+
+            {info.links.gitHub !== undefined ? (
+              <Button
+                className={classes.button}
+                component="a"
+                target="_blank"
+                href={info.links.visit}
+                size="small"
+                color="secondary"
+              >
+                Github
+              </Button>
+            ) : (
+              <span></span>
+            )}
+
+            <Button
+              component={Link}
+              to={`/project/${info.id}`}
+              className={classes.button}
+              size="small"
+              color="secondary"
+            >
               Learn More
             </Button>
           </div>

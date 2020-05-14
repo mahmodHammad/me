@@ -12,8 +12,8 @@ import AccountTreeIcon from "@material-ui/icons/AccountTree";
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 30,
-    paddingTop: 100,
-    paddingBottom: 150
+    paddingTop: 140,
+    paddingBottom: 140
     //  border: "solid 1px red"
   },
   header: { fontSize: "3.8rem", marginTop: 40, color: theme.palette.txt.title },
@@ -48,6 +48,7 @@ const useStyles = makeStyles(theme => ({
   },
   "@media (max-width:  960px)": {
     root: {
+      textAlign: "center" ,
       padding: "30px 10px"
     },
     header: {
@@ -66,7 +67,6 @@ const useStyles = makeStyles(theme => ({
     intro: { paddingRight: 0 }
   },
   "@media (max-width: 600px)": {
-    root: { textAlign: "center" },
     header: {
       fontSize: "2.2rem"
     },
