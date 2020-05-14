@@ -40,17 +40,6 @@ export default class App extends Component {
     palette: this.state.cutumeTheme
   });
 
-  // XXX will be deprecated XXX
-  // changeThemeOnce = (main, sec, value) => {
-  //   let oldTheme = { ...this.state.cutumeTheme };
-  //   oldTheme[main][sec] = value;
-  //   this.setState({ cutumeTheme: oldTheme });
-
-  //   this.theme = createMuiTheme({
-  //     palette: this.state.cutumeTheme
-  //   });
-  // };
-
   changeTheme = () => {
     const islight = this.state.isLightMode;
     let oldTheme = { ...this.state.cutumeTheme };
@@ -92,7 +81,6 @@ export default class App extends Component {
     configureAnchors({ scrollDuration: 0 });
   }
 
-  // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   render() {
     const { theme } = this;
     return (

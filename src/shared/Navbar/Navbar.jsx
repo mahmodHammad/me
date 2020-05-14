@@ -2,7 +2,6 @@
 // projects to the right -> click navigate to home then prjects
 // contact to the right -> click navigate to the home then contact
 import React from "react";
-// import Sidebar from "./Sidebar/Sidebar";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -29,19 +28,8 @@ const useStyles = makeStyles(theme => ({
     padding: "2px 10px",
     margin: 2,
     marginLeft: 5
-    // fontSize: "0.7rem",
   },
   themeicon: { marginLeft: 4 }
-  //   "@media (max-width: 600px)": {
-  //     study: {
-  //       fontSize: "0.6rem",
-  //       padding: "2px 6px"
-  //     },
-  //     logoText: { fontSize: "0.8rem" },
-  //     logo:{
-  //       marginLeft:-10
-  //     }
-  //   }
 }));
 
 function HideOnScroll(props) {
@@ -89,9 +77,8 @@ export default function Navbar({ props, themeChange, isLight }) {
                 className={classes.study}
                 color="primary"
                 component={Link}
-               
                 to={{
-                  pathname: '/',
+                  pathname: "/",
                   state: {
                     scrollTo: "contact"
                   }
@@ -104,11 +91,9 @@ export default function Navbar({ props, themeChange, isLight }) {
                 className={classes.study}
                 variant="outlined"
                 color="secondary"
-                // href={`/${process.env.PUBLIC_URL}/#projects`}
                 component={Link}
-                
                 to={{
-                  pathname: '/',
+                  pathname: "/",
                   state: {
                     scrollTo: "projects"
                   }

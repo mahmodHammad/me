@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -46,8 +45,7 @@ export default function CustomizedMenus() {
         <MenuIcon color="primary" />
       </IconButton>
 
-      <ClickAwayListener onClickAway={()=>console.log("closes")}>
-      
+      <ClickAwayListener touchEvent="onTouchStart" onClickAway={handleClose}>
         <Grow in={Open}>
           <Paper variant="outlined" className={classes.dropdown}>
             <Button

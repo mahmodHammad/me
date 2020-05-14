@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 // import Sidebar from "./Sidebar/Sidebar";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
-import Divider from "@material-ui/core/Divider";
 import { goToAnchor } from "react-scrollable-anchor";
 
 import Intro from "./components/Intro";
@@ -25,25 +24,16 @@ export default function Home(props) {
   useEffect(() => {
     if (props.location.state !== undefined) {
       const target = props.location.state.scrollTo;
-      // without this line it does not work!!!
       goToAnchor(target);
-    console.log("Update the lol");
-
     }
-    console.log(props.location.state);
   });
-
-  
 
   return (
     <div className={classes.root}>
       <Container maxWidth="lg">
         <Intro />
-        {/* <Divider variant="middle" /> */}
         <Skills />
-        {/* <Divider variant="middle" /> */}
         <Projects />
-        {/* <Divider variant="middle" /> */}
       </Container>
       <Contact />
     </div>
