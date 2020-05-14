@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
   logoIcon: {
     width: 40,
     height: 40,
-    color:"#222"
+    color: "#222"
   },
   button: {
     textDecoration: "none",
@@ -74,8 +74,6 @@ export default function Projec({ match }) {
   const [info, setinfo] = useState({});
   useEffect(() => {
     const info = AllProjects.find(e => e.id === projId);
-
-    console.log(info);
     setinfo(info);
   });
 
@@ -97,30 +95,25 @@ export default function Projec({ match }) {
                 href={info.links.gitHub}
                 target="_blank"
               >
-                <GH
-                  className={classes.logoIcon}
-                  fontSize="large"
-                />
+                <GH className={classes.logoIcon} fontSize="large" />
               </IconButton>
             ) : (
               <span></span>
             )}
-            {info.links.gitHub !== undefined ? (
+            
               <Button
                 className={classes.button}
                 component={Link}
-                href={info.links.gitHub}
+                href={info.links.visit}
                 target="_blank"
                 fontSize="large"
                 color="secondary"
                 variant="contained"
                 startIcon={<OpenInNewIcon />}
               >
-                View The Website
+                Visit The Website
               </Button>
-            ) : (
-              <span></span>
-            )}
+         
             <img src={info.img} className={classes.img} alt="projImg" />
             <Typography className={classes.body} gutterBottom variant="h5">
               {info.body}

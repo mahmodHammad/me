@@ -73,7 +73,7 @@ export default function Navbar({ info }) {
                 {l}
               </Button>
             ))}
-            <Button className={classes.button} size="small" color="secondary">
+            <Button component={Link} to={`/project/${info.id}`} className={classes.button} size="small" color="secondary">
               Learn More
             </Button>
           </div>
