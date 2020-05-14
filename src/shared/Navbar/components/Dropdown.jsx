@@ -7,7 +7,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
-import Grow  from "@material-ui/core/Grow";
+import Grow from "@material-ui/core/Grow";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
 
@@ -16,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   dropdown: {
     position: "fixed",
     top: 70,
-    width: "150px",
+    width: "155px",
     right: 15
   }
 }));
@@ -45,77 +46,46 @@ export default function CustomizedMenus() {
         <MenuIcon color="primary" />
       </IconButton>
 
-      <Grow  in={Open}>
-        <Paper variant="outlined" className={classes.dropdown}>
-          <Button
-            size="large"
-            color="secondary"
-            startIcon={<AccountTreeIcon />}
-            fullWidth
-            // href={`/${process.env.PUBLIC_URL}/#projects`}
-            component={Link}
-            to={{
-              pathname: "/",
-              state: {
-                scrollTo: "projects"
-              }
-            }}
-          >
-            Projects
-          </Button>
-          <Divider />
-          <Button
-            fullWidth
-            size="large"
-            color="secondary"
-            startIcon={<Mail />}
-            // href={`/${process.env.PUBLIC_URL}/#projects`}
-            component={Link}
-            to={{
-              pathname: "/",
-              state: {
-                scrollTo: "contact"
-              }
-            }}
-          >
-            Contacts
-          </Button>
-        </Paper>
-        {/* <StyledMenuItem>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText
-            component={Link}
-            to={{
-              pathname: "/",
-              state: {
-                scrollTo: "projects"
-              }
-            }}
-            primary="Contact"
-          />
-        </StyledMenuItem>
-
-        <Button
-          component={Link}
-          to={{
-            pathname: "/",
-            state: {
-              scrollTo: "projects"
-            }
-          }}
-        >
-          car
-        </Button>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Projects" />
-        </StyledMenuItem>
-      */}
-      </Grow >
+      <ClickAwayListener onClickAway={()=>console.log("closes")}>
+      
+        <Grow in={Open}>
+          <Paper variant="outlined" className={classes.dropdown}>
+            <Button
+              size="large"
+              color="secondary"
+              onClick={handleClose}
+              startIcon={<AccountTreeIcon />}
+              fullWidth
+              component={Link}
+              to={{
+                pathname: "/",
+                state: {
+                  scrollTo: "projects"
+                }
+              }}
+            >
+              Projects
+            </Button>
+            <Divider />
+            <Button
+              fullWidth
+              size="large"
+              color="secondary"
+              onClick={handleClose}
+              startIcon={<Mail />}
+              component={Link}
+              to={{
+                pathname: "/",
+                state: {
+                  scrollTo: "contact"
+                }
+              }}
+            >
+              Contacts
+            </Button>
+          </Paper>
+        </Grow>
+      </ClickAwayListener>
     </div>
   );
 }
