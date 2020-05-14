@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   contentHeader: {
     fontWeight: "bolder"
   },
-  chip: { padding: "6px 4px 6px 10px", marginLeft: 12 }
+  chip: { padding: "6px 4px 6px 10px", marginLeft: 12 ,marginBottom:2}
 }));
 
 export default function Navbar({ info }) {

@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
+
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
-
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import AllProjects from "../../config/Projects";
-import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 
+import AllProjects from "../../config/Projects";
+
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import GH from "../../Icons/GH";
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 10,
@@ -23,14 +25,15 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 5
   },
   header: {
-    fontSize: "2.8rem",
+    fontSize: "2.4rem",
     fontWeight: "bold",
     textAlign: "center",
     color: theme.palette.txt.title
   },
+  TechHeader: { fontSize: "1.4rem", letterSpacing: 1, marginTop: 7 },
   body: {
+    fontSize: "1.2rem",
     color: theme.palette.txt.body,
-    marginTop: 30,
     textAlign: "left"
   },
   techUsedHeader: { color: theme.palette.txt.title, fontSize: "1.6rem" },
@@ -48,6 +51,11 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       textDecoration: "none"
     }
+  },
+  "@media (max-width: 600px)": {
+    root: { paddingTop: 130 },
+    header: {fontSize: "1.8rem"},
+    TechHeader:{fontSize:"1.2rem"}
   }
 }));
 
@@ -69,8 +77,13 @@ export default function Projec({ match }) {
             <Typography align="center" className={classes.header} variant="h1">
               {info.title}
             </Typography>
-            <Typography color="secondary" align="center" variant="h6">
-              {info.Technologies.map(e => e + ", ")}
+            <Typography
+              color="secondary"
+              align="center"
+              variant="body1"
+              className={classes.TechHeader}
+            >
+              {info.Technologies.map((e,index,arr) => `${e}${index===arr.length-1?"":"-"}` )}
             </Typography>
 
             {info.links.gitHub !== undefined ? (
@@ -99,9 +112,18 @@ export default function Projec({ match }) {
             </Button>
 
             <img src={info.img} className={classes.img} alt="projImg" />
-            <Typography className={classes.body} gutterBottom variant="h5">
-              {info.body}
-            </Typography>
+            <div className={classes.techUsed}>
+              <Typography
+                className={classes.techUsedHeader}
+                gutterBottom
+                variant="h6"
+              >
+                Project details:
+              </Typography>
+              <Typography className={classes.body} gutterBottom variant="h5">
+                {info.body}
+              </Typography>
+            </div>
             <div className={classes.techUsed}>
               <Typography
                 className={classes.techUsedHeader}
