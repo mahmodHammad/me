@@ -1,6 +1,4 @@
-// picture&details
-
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -10,11 +8,11 @@ import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingTop: 50,
-    paddingBottom: 50,
+    paddingTop: 60,
+    paddingBottom: 60,
 
     marginTop: 120,
-    background: "#d5d5d555"
+    background: theme.palette.contact.bg
   },
   header: {
     fontSize: "1.8rem",
@@ -33,12 +31,13 @@ const useStyles = makeStyles(theme => ({
   },
   buttonContainer: { textAlign: "center", marginTop: 20 },
   button: {
-    color: theme.palette.secondary.main,
-    fontWeight:"bold",
-    background: "#fff1",
+    color: "#222",
+    borderColor:"#111",
+    // background: "#fff1",
     "&:hover": {
       color: "#fff",
-      background: theme.palette.secondary.main
+      background: theme.palette.secondary.main,
+      borderColor:"#0000"
     }
   }
 }));
@@ -75,7 +74,7 @@ export default function Navbar() {
             <Grid className={classes.buttonContainer} item xs={5} lg={3} md={4}>
               <Button
                 fullWidth
-                color="secondary"
+                color="primary"
                 className={classes.button}
                 variant="outlined"
               >

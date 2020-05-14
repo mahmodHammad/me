@@ -25,7 +25,9 @@ const useStyles = makeStyles(theme => ({
     marginTop: 5
   },
   paper: {
-    borderRadius: 10
+    borderRadius: 10,
+    background:theme.palette.card.bg
+
   },
   cardItem: {
     textAlign: "center",

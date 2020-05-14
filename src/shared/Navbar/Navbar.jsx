@@ -14,10 +14,11 @@ import Slide from "@material-ui/core/Slide";
 
 import IconButton from "@material-ui/core/IconButton";
 
-import Dropdwon from "./components/Dropdown" 
+import Dropdwon from "./components/Dropdown";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 
-import Logo from "./logo.png";
+import LogoDark from "./logo-dark.png";
+import LogoLight from "./logo-light.png";
 const useStyles = makeStyles(theme => ({
   logoContainer: {
     flexGrow: 1,
@@ -31,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 5
     // fontSize: "0.7rem",
   },
-  themeicon:{marginLeft:4}
+  themeicon: { marginLeft: 4 }
   //   "@media (max-width: 600px)": {
   //     study: {
   //       fontSize: "0.6rem",
@@ -58,7 +59,7 @@ function HideOnScroll(props) {
   );
 }
 
-export default function Navbar({ props ,themeChange}) {
+export default function Navbar({ props, themeChange ,isLight}) {
   const classes = useStyles();
   return (
     <div>
@@ -66,11 +67,13 @@ export default function Navbar({ props ,themeChange}) {
         <AppBar color="transparent" className={classes.nav}>
           <Toolbar className={classes.nav}>
             <div className={classes.logoContainer}>
+              
               <IconButton color="inherit" component={Link} to="/" size="large">
-                <img className={classes.logo} src={Logo} alt="Mahmoud Hammad" />
+                {isLight?  <img className={classes.logo} src={LogoLight} alt="Mahmoud Hammad" />:<img className={classes.logo} src={LogoDark} alt="Mahmoud Hammad" />}
+              
               </IconButton>
             </div>
-           
+
             <Hidden smDown={true}>
               <Button
                 size="large"
@@ -94,25 +97,19 @@ export default function Navbar({ props ,themeChange}) {
               </Button>
             </Hidden>
 
-
             <IconButton
-                className={classes.themeicon}
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={themeChange}
-              >
-                <Brightness4Icon />
-              </IconButton>
-
+              className={classes.themeicon}
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={themeChange}
+            >
+              <Brightness4Icon color="primary" />
+            </IconButton>
 
             <Hidden mdUp={true}>
-             
-
-             <Dropdwon/>
+              <Dropdwon />
             </Hidden>
-
-            
           </Toolbar>
         </AppBar>
       </HideOnScroll>

@@ -18,7 +18,8 @@ const useStyles = makeStyles(theme => ({
   },
   cardContainer: { textAlign: "center" },
   card: {
-    marginTop: 10
+    marginTop: 10,
+    background:theme.palette.card.bg
   },
   buttons: {
     textAlign: "center",

@@ -45,6 +45,7 @@ const useStyles = makeStyles(theme => ({
   logoIcon: {
     width: 40,
     height: 40,
+    color:"#222"
   },
   button: {
     textDecoration: "none",
@@ -98,7 +99,6 @@ export default function Projec({ match }) {
               >
                 <GH
                   className={classes.logoIcon}
-                  color="primary"
                   fontSize="large"
                 />
               </IconButton>

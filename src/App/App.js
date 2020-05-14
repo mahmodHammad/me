@@ -30,7 +30,9 @@ export default class App extends Component {
         body: "#666"
       },
       navbar: { default: "#fff" },
-      footer: { bg: "#2b2b2b", txt: "#FFC107" }
+      footer: { bg: "#2b2b2b", txt: "#FFC107" },
+      card:{bg:"#fff"},
+      contact:{bg:"#f1f1f1"}
     },
     isLightMode: true
   };
@@ -48,22 +50,29 @@ export default class App extends Component {
   //     palette: this.state.cutumeTheme
   //   });
   // };
-  footer: { bg: "#2b2b2b", txt: "#FFC107" }
 
   changeTheme = () => {
     const islight = this.state.isLightMode;
     let oldTheme = { ...this.state.cutumeTheme };
     if (islight) {
       oldTheme.primary.main = "#eee";
-      oldTheme.navbar.default = "#444";
-      oldTheme.background.default = "#999";
-      oldTheme.footer.bg = "#000";
+      oldTheme.navbar.default = "#333";
+      oldTheme.background.default = "#ddd";
+      oldTheme.footer.bg = "#090909";
+      oldTheme.secondary.main = "#FFa409";
+      oldTheme.card.bg = "#f6f6f6";
+      oldTheme.contact.bg="#d4d4d4"
     }
     else{
       oldTheme.primary.main = "#333";
       oldTheme.navbar.default = "#fff";
       oldTheme.background.default = "#fafafa";
       oldTheme.footer.bg = "#2b2b2b";
+      oldTheme.secondary.main = "#F89500";
+      oldTheme.card.bg = "#fff";
+      oldTheme.contact.bg="#f1f1f1"
+
+
     }
     this.setState({ cutumeTheme: oldTheme });
 
@@ -105,7 +114,7 @@ export default class App extends Component {
             style={{ background: theme.palette.background.default }}
           >
             <BrowserRouter basename={process.env.PUBLIC_URL}>
-              <Navbar themeChange={this.changeTheme} />
+              <Navbar themeChange={this.changeTheme} isLight={this.state.isLightMode} />
 
               <Switch>
                 <Route exact path="/" render={props => <Home {...props} />} />
