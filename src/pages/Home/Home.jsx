@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import Sidebar from "./Sidebar/Sidebar";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
@@ -21,15 +21,19 @@ const useStyles = makeStyles(theme => ({
 }));
 export default function Home(props) {
   const classes = useStyles();
-  console.log("PPPPPPPPPPP", props);
 
-  const handleScroll = target => {};
+  useEffect(() => {
+    if (props.location.state !== undefined) {
+      const target = props.location.state.scrollTo;
+      // without this line it does not work!!!
+      goToAnchor(target);
+    console.log("Update the lol");
 
-  if (props.location.state !== undefined) {
-    const target = props.location.state.scrollTo;    
-    // without this line it does not work!!!
-    setTimeout(() => goToAnchor(target), 50);
-  }
+    }
+    console.log(props.location.state);
+  });
+
+  
 
   return (
     <div className={classes.root}>

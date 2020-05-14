@@ -64,7 +64,7 @@ export default function Navbar({ props, themeChange, isLight }) {
     <div>
       <HideOnScroll {...props}>
         <AppBar color="transparent" className={classes.nav}>
-          <Toolbar className={classes.nav}>
+          <Toolbar>
             <div className={classes.logoContainer}>
               <IconButton color="inherit" component={Link} to="/" size="large">
                 {isLight ? (
@@ -89,9 +89,8 @@ export default function Navbar({ props, themeChange, isLight }) {
                 className={classes.study}
                 color="primary"
                 component={Link}
-               
                 to={{
-                  pathname: '/',
+                  pathname: "/",
                   state: {
                     scrollTo: "contact"
                   }
@@ -106,9 +105,8 @@ export default function Navbar({ props, themeChange, isLight }) {
                 color="secondary"
                 // href={`/${process.env.PUBLIC_URL}/#projects`}
                 component={Link}
-                
                 to={{
-                  pathname: '/',
+                  pathname: "/",
                   state: {
                     scrollTo: "projects"
                   }
