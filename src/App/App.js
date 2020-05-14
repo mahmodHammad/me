@@ -31,8 +31,8 @@ export default class App extends Component {
       },
       navbar: { default: "#fff" },
       footer: { bg: "#2b2b2b", txt: "#FFC107" },
-      card:{bg:"#fff"},
-      contact:{bg:"#f1f1f1"}
+      card: { bg: "#fff" },
+      contact: { bg: "#f1f1f1" }
     },
     isLightMode: true
   };
@@ -61,18 +61,15 @@ export default class App extends Component {
       oldTheme.footer.bg = "#090909";
       oldTheme.secondary.main = "#FFa409";
       oldTheme.card.bg = "#f6f6f6";
-      oldTheme.contact.bg="#d4d4d4"
-    }
-    else{
+      oldTheme.contact.bg = "#d4d4d4";
+    } else {
       oldTheme.primary.main = "#333";
       oldTheme.navbar.default = "#fff";
       oldTheme.background.default = "#fafafa";
       oldTheme.footer.bg = "#2b2b2b";
       oldTheme.secondary.main = "#F89500";
       oldTheme.card.bg = "#fff";
-      oldTheme.contact.bg="#f1f1f1"
-
-
+      oldTheme.contact.bg = "#f1f1f1";
     }
     this.setState({ cutumeTheme: oldTheme });
 
@@ -114,7 +111,10 @@ export default class App extends Component {
             style={{ background: theme.palette.background.default }}
           >
             <BrowserRouter basename={process.env.PUBLIC_URL}>
-              <Navbar themeChange={this.changeTheme} isLight={this.state.isLightMode} />
+              <Navbar
+                themeChange={this.changeTheme}
+                isLight={this.state.isLightMode}
+              />
 
               <Switch>
                 <Route exact path="/" render={props => <Home {...props} />} />

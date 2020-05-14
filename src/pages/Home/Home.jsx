@@ -3,6 +3,7 @@ import React from "react";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
+import { goToAnchor } from "react-scrollable-anchor";
 
 import Intro from "./components/Intro";
 import Skills from "./components/Skills";
@@ -18,15 +19,18 @@ const useStyles = makeStyles(theme => ({
     }
   }
 }));
-
-export default function Navbar({
-  todo,
-  removeFromTodo,
-  communities,
-  getCommunity,
-  props
-}) {
+export default function Home(props) {
   const classes = useStyles();
+  console.log("PPPPPPPPPPP", props);
+
+  const handleScroll = target => {};
+
+  if (props.location.state !== undefined) {
+    const target = props.location.state.scrollTo;    
+    // without this line it does not work!!!
+    setTimeout(() => goToAnchor(target), 50);
+  }
+
   return (
     <div className={classes.root}>
       <Container maxWidth="lg">
@@ -37,7 +41,7 @@ export default function Navbar({
         <Projects />
         {/* <Divider variant="middle" /> */}
       </Container>
-        <Contact />
+      <Contact />
     </div>
   );
 }

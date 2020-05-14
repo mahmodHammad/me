@@ -11,14 +11,13 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
-
 import IconButton from "@material-ui/core/IconButton";
-
 import Dropdwon from "./components/Dropdown";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 
 import LogoDark from "./logo-dark.png";
 import LogoLight from "./logo-light.png";
+
 const useStyles = makeStyles(theme => ({
   logoContainer: {
     flexGrow: 1,
@@ -59,7 +58,7 @@ function HideOnScroll(props) {
   );
 }
 
-export default function Navbar({ props, themeChange ,isLight}) {
+export default function Navbar({ props, themeChange, isLight }) {
   const classes = useStyles();
   return (
     <div>
@@ -67,10 +66,20 @@ export default function Navbar({ props, themeChange ,isLight}) {
         <AppBar color="transparent" className={classes.nav}>
           <Toolbar className={classes.nav}>
             <div className={classes.logoContainer}>
-              
               <IconButton color="inherit" component={Link} to="/" size="large">
-                {isLight?  <img className={classes.logo} src={LogoLight} alt="Mahmoud Hammad" />:<img className={classes.logo} src={LogoDark} alt="Mahmoud Hammad" />}
-              
+                {isLight ? (
+                  <img
+                    className={classes.logo}
+                    src={LogoLight}
+                    alt="Mahmoud Hammad"
+                  />
+                ) : (
+                  <img
+                    className={classes.logo}
+                    src={LogoDark}
+                    alt="Mahmoud Hammad"
+                  />
+                )}
               </IconButton>
             </div>
 
@@ -79,8 +88,14 @@ export default function Navbar({ props, themeChange ,isLight}) {
                 size="large"
                 className={classes.study}
                 color="primary"
-                component="a"
-                href="/#contact"
+                component={Link}
+               
+                to={{
+                  pathname: '/',
+                  state: {
+                    scrollTo: "contact"
+                  }
+                }}
               >
                 contact
               </Button>
@@ -89,9 +104,15 @@ export default function Navbar({ props, themeChange ,isLight}) {
                 className={classes.study}
                 variant="outlined"
                 color="secondary"
-                component="a"
                 // href={`/${process.env.PUBLIC_URL}/#projects`}
-                href={`/#projects`}
+                component={Link}
+                
+                to={{
+                  pathname: '/',
+                  state: {
+                    scrollTo: "projects"
+                  }
+                }}
               >
                 My Projects
               </Button>

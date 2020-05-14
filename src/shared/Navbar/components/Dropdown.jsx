@@ -7,6 +7,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MenuIcon from "@material-ui/icons/Menu";
+import { Link } from "react-router-dom";
 
 const StyledMenu = withStyles({
   paper: {
@@ -72,15 +73,34 @@ export default function CustomizedMenus() {
           <ListItemIcon>
             <InboxIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Contact" />
+          <ListItemText
+            component={Link}
+            to={{
+              pathname: "/",
+              state: {
+                scrollTo: "projects"
+              }
+            }}
+            primary="Contact"
+          />
         </StyledMenuItem>
 
-        <StyledMenuItem>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Projects" />
-        </StyledMenuItem>
+        <div
+          component={Link}
+          to={{
+            pathname: "/",
+            state: {
+              scrollTo: "projects"
+            }
+          }}
+        >
+          <StyledMenuItem>
+            <ListItemIcon>
+              <InboxIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Projects" />
+          </StyledMenuItem>
+        </div>
       </StyledMenu>
     </div>
   );
