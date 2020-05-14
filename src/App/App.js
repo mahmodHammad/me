@@ -30,7 +30,7 @@ export default class App extends Component {
         body: "#666"
       },
       navbar: { default: "#fff" },
-      footer: { bg: "#2b2b2b", txt: "#FFC107" },
+      footer: { bg: "#2b2b2b", txt: "#FFC107",cc:"#181818" },
       card: { bg: "#fff" },
       contact: { bg: "#f1f1f1" }
     },
@@ -47,18 +47,21 @@ export default class App extends Component {
       oldTheme.primary.main = "#eee";
       oldTheme.navbar.default = "#333";
       oldTheme.background.default = "#ddd";
-      oldTheme.footer.bg = "#090909";
       oldTheme.secondary.main = "#FFa409";
       oldTheme.card.bg = "#f6f6f6";
       oldTheme.contact.bg = "#d4d4d4";
+      oldTheme.footer.bg = "#181818";
+      oldTheme.footer.cc = "#000";
     } else {
       oldTheme.primary.main = "#333";
       oldTheme.navbar.default = "#fff";
       oldTheme.background.default = "#fafafa";
-      oldTheme.footer.bg = "#2b2b2b";
       oldTheme.secondary.main = "#F89500";
       oldTheme.card.bg = "#fff";
       oldTheme.contact.bg = "#f1f1f1";
+      oldTheme.footer.bg = "#2b2b2b";
+      oldTheme.footer.cc = "#111";
+
     }
     this.setState({ cutumeTheme: oldTheme });
 
