@@ -25,12 +25,8 @@ export default function CustomizedMenus() {
   const [Open, setOpen] = useState(false);
 
   const handleClick = event => {
-    if (Open) {
-      setOpen(false);
-    } else {
-      // the clickAwayLister overrride it so i had to use settimeout to make it happens after the clickAway
-      setTimeout(() => setOpen(true), 50);
-    }
+    // the clickAwayLister overrride it so i had to use settimeout to make it happens after the clickAway
+    setTimeout(() => setOpen(!Open), 50);
   };
 
   const handleClose = () => {
