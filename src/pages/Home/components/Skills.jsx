@@ -23,8 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     borderRadius: 10,
-    background:theme.palette.card.bg
-
+    background: theme.palette.card.bg
   },
   cardItem: {
     textAlign: "center",
@@ -42,10 +41,14 @@ const useStyles = makeStyles(theme => ({
   lastcardItem: { borderLeft: "solid 1px #ddd" },
   "@media (max-width: 600px)": {
     root: {
+      padding: 10,
       marginTop: 80
     },
     lastcardItem: {
       marginTop: 30
+    },
+    cardItem: {
+      padding: "50px 25px"
     }
   },
   "@media (max-width: 960px)": {
@@ -80,7 +83,6 @@ export default function Navbar() {
             <Typography variant="body1" className={classes.body}>
               HTML5, CSS3, Sass, JavaScript, ES6
             </Typography>
-
             <Typography
               gutterBottom
               variant="h6"
