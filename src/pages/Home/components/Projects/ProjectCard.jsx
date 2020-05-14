@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
+import Chip from "@material-ui/core/Chip";
+import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,7 +33,8 @@ const useStyles = makeStyles(theme => ({
   img: {},
   contentHeader: {
     fontWeight: "bolder"
-  }
+  },
+  chip: { padding: "6px 4px 6px 10px", marginLeft: 12 }
 }));
 
 export default function Navbar({ info }) {
@@ -63,12 +66,20 @@ export default function Navbar({ info }) {
               className="contentHeader"
             >
               {info.title}
+              <Chip
+          size="small"
+         variant="outlined"
+                className={classes.chip}
+                color="secondary"
+                icon={<CalendarTodayIcon fontSize="small" />}
+                label={info.date}
+                clickable={false}
+              />
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               {info.body.substring(0, 100) + "..."}
             </Typography>
           </CardContent>
-          {/* <Typography className={classes.tech}>{info.Technologies}</Typography> */}
         </CardActionArea>
         <Divider />
         <CardActions>
