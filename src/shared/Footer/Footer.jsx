@@ -1,7 +1,7 @@
 // intro h1 , h2 ,may have a background
 // SHOULD be sutnning!!!
 
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     background: theme.palette.footer.bg,
     color: theme.palette.footer.txt,
-    padding: 15
+    padding: 20
   },
   icons:{
     color:theme.palette.footer.txt,
@@ -29,8 +29,15 @@ const useStyles = makeStyles(theme => ({
     marginBottom:10
   },
   title:{
-    color:"#ccc",
-    fontSize:"0.7rem"
+    color:"#bfbfbf",
+    fontSize:"0.9rem"
+  },
+  "@media (max-width: 600px)": {
+    title:{
+      fontSize:"0.7rem"
+
+    }
+  
   }
 }));
 

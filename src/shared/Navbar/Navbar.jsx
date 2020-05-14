@@ -22,14 +22,18 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     justifyContent: "left"
   },
-  logo: { height: 58, margin: 3 },
+  logo: { height: 60, margin: 3 },
   nav: { background: theme.palette.navbar.default },
   study: {
     padding: "2px 10px",
     margin: 2,
     marginLeft: 5
   },
-  themeicon: { marginLeft: 4 }
+  themeicon: { marginLeft: 4 },
+  "@media (max-width: 600px)": {
+    logo:{height:45}
+  },
+
 }));
 
 function HideOnScroll(props) {
