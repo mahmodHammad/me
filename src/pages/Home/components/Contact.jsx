@@ -24,7 +24,8 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.txt.body,
     marginTop: 5,
     textAlign: "center",
-    marginBottom: 30
+    marginBottom: 10,
+    fontSize: "1.2rem"
   },
   inputContainer: {
     padding: 20
@@ -32,12 +33,22 @@ const useStyles = makeStyles(theme => ({
   buttonContainer: { textAlign: "center", marginTop: 20 },
   button: {
     color: "#222",
-    borderColor:"#111",
+    borderColor: "#111",
     // background: "#fff1",
     "&:hover": {
       color: "#fff",
       background: theme.palette.secondary.main,
-      borderColor:"#0000"
+      borderColor: "#0000"
+    }
+  },
+  "@media (max-width:  600px)": {
+    body:{
+      fontSize:"1rem",
+    }
+  },
+    "@media (max-width:  730px)": {
+    hide: {
+      display: "none"
     }
   }
 }));
@@ -48,8 +59,18 @@ export default function Navbar() {
     <div id="contact" className={classes.root}>
       <Container maxWidth="lg">
         <Typography variant="h1" gutterBottom className={classes.header}>
-          Contact Info
+          Get in touch
         </Typography>
+        <Typography variant="h2" gutterBottom className={classes.body}>
+          i am interested in freelance opportunities, espacially ambitious or
+          large projects.
+          <span className={classes.hide}>
+            <br />
+          </span>{" "}
+          However, if you have other request or question. don't hesitate to
+          contact me.
+        </Typography>
+
         <form action="#">
           <Grid justify="center" container>
             <Grid className={classes.inputContainer} item xs={12} md={6}>

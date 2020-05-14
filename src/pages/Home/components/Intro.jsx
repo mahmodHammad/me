@@ -49,9 +49,6 @@ const useStyles = makeStyles(theme => ({
     header: {
       fontSize: "2.4rem"
     },
-    body: {
-      fontSize: "1.3rem"
-    },
     button: {
       padding: "8px 22px",
       fontSize: "0.8rem"

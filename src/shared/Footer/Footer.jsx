@@ -16,15 +16,21 @@ const useStyles = makeStyles(theme => ({
   root: {
     background: theme.palette.footer.bg,
     color: theme.palette.footer.txt,
-    padding: 20
+    padding: 15
   },
   icons:{
     color:theme.palette.footer.txt,
+    margin:"0 6px",
     "&:hover":{
       color:"#fff"
     }
   },connect:{
-    textAlign:"center"
+    textAlign:"center",
+    marginBottom:10
+  },
+  title:{
+    color:"#ccc",
+    fontSize:"0.7rem"
   }
 }));
 
@@ -32,9 +38,6 @@ export default function Navbar() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography align="center" variant="body1" gutterBottom>
-        © 2020 Mahmoud Hammad. All rights reserved.
-      </Typography>
       <div className={classes.connect} >
 
         <IconButton component="a" href="mailto:ma7mod.7ammad@gmail.com">
@@ -55,6 +58,10 @@ export default function Navbar() {
           <Twitter className={classes.icons} />
         </IconButton>
       </div>
+      <Typography align="center" variant="body1" className={classes.title} gutterBottom>
+        © 2020 Mahmoud Hammad. All rights reserved.
+      </Typography>
+
     </div>
   );
 }
