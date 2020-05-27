@@ -30,9 +30,10 @@ export default class App extends Component {
         body: "#666"
       },
       navbar: { default: "#fff" },
-      footer: { bg: "#2b2b2b", txt: "#FFC107",cc:"#181818" },
+      footer: { bg: "#2b2b2b", txt: "#FFC107", cc: "#181818" },
       card: { bg: "#fff" },
-      contact: { bg: "#f1f1f1" }
+      contact: { bg: "#f1f1f1" },
+      div: { default: "#d1d1d1" }
     },
     isLightMode: true
   };
@@ -45,13 +46,16 @@ export default class App extends Component {
     let oldTheme = { ...this.state.cutumeTheme };
     if (islight) {
       oldTheme.primary.main = "#eee";
-      oldTheme.navbar.default = "#333";
-      oldTheme.background.default = "#ddd";
+      oldTheme.navbar.default = "#111";
+      oldTheme.background.default = "#333";
       oldTheme.secondary.main = "#FFa409";
-      oldTheme.card.bg = "#f6f6f6";
-      oldTheme.contact.bg = "#d4d4d4";
-      oldTheme.footer.bg = "#181818";
-      oldTheme.footer.cc = "#000";
+      oldTheme.card.bg = "#111";
+      oldTheme.contact.bg = "#111";
+      oldTheme.footer.bg = "#171717";
+      oldTheme.footer.cc = "#111";
+      oldTheme.txt.title = "#fff";
+      oldTheme.txt.body = "#d9d9d9";
+      oldTheme.div.default = "#666";
     } else {
       oldTheme.primary.main = "#333";
       oldTheme.navbar.default = "#fff";
@@ -61,7 +65,11 @@ export default class App extends Component {
       oldTheme.contact.bg = "#f1f1f1";
       oldTheme.footer.bg = "#2b2b2b";
       oldTheme.footer.cc = "#111";
-
+      oldTheme.txt.title = "#fff";
+      oldTheme.txt.body = "#aaa";
+      oldTheme.txt.title = "#333";
+      oldTheme.txt.body = "#666";
+      oldTheme.div.default = "#d1d1d1";
     }
     this.setState({ cutumeTheme: oldTheme });
 

@@ -32,7 +32,10 @@ const useStyles = makeStyles(theme => ({
   },
   img: {},
   contentHeader: {
-    fontWeight: "bolder"
+    color: theme.palette.txt.title,
+  },
+  body: {
+    color: theme.palette.txt.body,
   },
   chip: { padding: "6px 4px 6px 10px", marginLeft: 12, marginBottom: 2 }
 }));
@@ -63,7 +66,7 @@ export default function Navbar({ info }) {
               gutterBottom
               variant="h5"
               component="h2"
-              className="contentHeader"
+              className={classes.contentHeader} 
             >
               {info.title}
               <Chip
@@ -76,12 +79,12 @@ export default function Navbar({ info }) {
                 clickable={false}
               />
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant="body2" className={classes.body} component="p">
               {info.body.substring(0, 100) + "..."}
             </Typography>
           </CardContent>
         </CardActionArea>
-        <Divider />
+        <Divider/>
         <CardActions>
           <div className={classes.buttons}>
             {info.links.visit !== undefined ? (

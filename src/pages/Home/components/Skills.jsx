@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   secHeader: {
     marginTop: 30
   },
-  lastcardItem: { borderLeft: "solid 1px #ddd" },
+  lastcardItem: { borderLeft:  `solid 1px ${theme.palette.div.default}` },
   "@media (max-width: 600px)": {
     root: {
       padding: 10,
@@ -50,9 +50,9 @@ const useStyles = makeStyles(theme => ({
     cardItem: {
       padding: "50px 25px"
     }
-  },
+  }, 
   "@media (max-width: 960px)": {
-    lastcardItem: { borderLeft: "none", borderTop: "solid 1px #ddd" }
+    lastcardItem: { borderLeft: "none", borderTop: `solid 1px ${theme.palette.div.default}`}
   }
 }));
 
