@@ -10,7 +10,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: 60,
     paddingBottom: 60,
-
     marginTop: 120,
     background: theme.palette.contact.bg
   },
@@ -30,10 +29,15 @@ const useStyles = makeStyles(theme => ({
   inputContainer: {
     padding: 20
   },
+  input: {
+    color: theme.palette.txt.body,
+    "& .MuiFormLabel-root": { color: theme.palette.text.body },
+    "& .MuiInputBase-input":{color: theme.palette.text.body }
+  },
   buttonContainer: { textAlign: "center", marginTop: 20 },
   button: {
-    color: "#222",
-    borderColor: "#111",
+    color: theme.palette.txt.body,
+    borderColor: theme.palette.txt.body,
     "&:hover": {
       color: "#fff",
       background: theme.palette.secondary.main,
@@ -41,11 +45,11 @@ const useStyles = makeStyles(theme => ({
     }
   },
   "@media (max-width:  600px)": {
-    body:{
-      fontSize:"1rem",
+    body: {
+      fontSize: "1rem"
     }
   },
-    "@media (max-width:  730px)": {
+  "@media (max-width:  730px)": {
     hide: {
       display: "none"
     }
@@ -73,10 +77,16 @@ export default function Navbar() {
         <form action="#">
           <Grid justify="center" container>
             <Grid className={classes.inputContainer} item xs={12} md={6}>
-              <TextField fullWidth label="name" placeholder="enter your name" />
+              <TextField
+                className={classes.input}
+                fullWidth
+                label="name"
+                placeholder="enter your name"
+              />
             </Grid>
             <Grid className={classes.inputContainer} item xs={12} md={6}>
               <TextField
+                className={classes.input}
                 fullWidth
                 label="Email"
                 placeholder="enter your E-Mail"
@@ -84,6 +94,7 @@ export default function Navbar() {
             </Grid>
             <Grid className={classes.inputContainer} item xs={12}>
               <TextField
+                className={classes.input}
                 fullWidth
                 multiline={true}
                 rows={4}
@@ -92,12 +103,7 @@ export default function Navbar() {
               />
             </Grid>
             <Grid className={classes.buttonContainer} item xs={5} lg={3} md={4}>
-              <Button
-                fullWidth
-                color="primary"
-                className={classes.button}
-                variant="outlined"
-              >
+              <Button fullWidth className={classes.button} variant="outlined">
                 Submit
               </Button>
             </Grid>
