@@ -15,7 +15,7 @@ import Dropdwon from "./components/Dropdown";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 
 import LogoDark from "./logo-dark.png";
-import LogoLight from "./logo-light.png";
+import LogoLight from "./logo-light.svg";
 
 const useStyles = makeStyles(theme => ({
   logoContainer: {

@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
   },
   "@media (max-width:  960px)": {
     root: {
-      textAlign: "center" ,
+      textAlign: "center",
       padding: "30px 10px"
     },
     header: {
@@ -97,13 +97,11 @@ export default function Navbar() {
           component="h1"
           gutterBottom
         >
-          Hey, i'm Mahmoud
+          Hey, I'm Mahmoud
         </Typography>
         <Typography className={classes.body} variant="h6" component="h2">
-          <b>Full-stack web developer / Javascript Lover</b>.{" "}
-            <br />
-          <span className={classes.exsp}>
-          </span>
+          <b>Full-stack web developer / Javascript Lover</b>. <br />
+          <span className={classes.exsp}></span>
           <span className={classes.body2}>
             I create cutom websites to help businesses do better online
           </span>
