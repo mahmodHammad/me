@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   contentHeader: {
     fontWeight: "bolder"
   },
-  chip: { padding: "6px 4px 6px 10px", marginLeft: 12 ,marginBottom:2}
+  chip: { padding: "6px 4px 6px 10px", marginLeft: 12, marginBottom: 2 }
 }));
 
 export default function Navbar({ info }) {
@@ -50,7 +50,7 @@ export default function Navbar({ info }) {
       lg={4}
     >
       <Card className={classes.card}>
-        <CardActionArea component={Link} to={`/project/${info.id}`}>
+        <CardActionArea  onClick={()=>window.scrollTo(0, 0)} component={Link} to={`/project/${info.id}`}>
           <CardMedia
             component="img"
             alt="Contemplative Reptile"
@@ -67,8 +67,8 @@ export default function Navbar({ info }) {
             >
               {info.title}
               <Chip
-          size="small"
-         variant="outlined"
+                size="small"
+                variant="outlined"
                 className={classes.chip}
                 color="secondary"
                 icon={<CalendarTodayIcon fontSize="small" />}
@@ -115,6 +115,7 @@ export default function Navbar({ info }) {
             )}
 
             <Button
+              onClick={() => window.scrollTo(0, 0)}
               component={Link}
               to={`/project/${info.id}`}
               className={classes.button}
