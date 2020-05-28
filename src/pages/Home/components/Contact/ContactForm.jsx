@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import FeedBack from "./FeedBack"
+import FeedBack from "./FeedBack";
 
 const submitURL =
   "https://script.google.com/macros/s/AKfycbwjbT_B94deK2f766IkAEpp2XIkPf83ld1GQ05QNVu_gWCVBMCG/exec";
@@ -119,10 +119,10 @@ export default function Navbar() {
           >
             {submitLoading ? "pending..." : "submit"}
           </Button>
-          {console.log("name is" , userName)}
+          {console.log("name is", userName)}
         </Grid>
         {success !== undefined ? (
-          <FeedBack success={success} userName={userName}/>
+          <FeedBack success={success} userName={userName} />
         ) : (
           <span></span>
         )}

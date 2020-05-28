@@ -2,9 +2,30 @@ import React from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import { makeStyles } from "@material-ui/core/styles";
+import Slide from "@material-ui/core/Slide";
+const useStyles = makeStyles(theme => ({
+  success: {
+    "& .MuiSnackbarContent-root": {
+      background: "#4caf50",
+      color: "#fff"
+    }
+  },
+  failed: {
+    "& .MuiSnackbarContent-root": {
+      background: "#f44336",
+      color: "#fff"
+    }
+  }
+}));
+
+function TransitionUp(props) {
+  return <Slide {...props} direction="up" />;
+}
 
 export default function SimpleSnackbar({ success, userName }) {
   const [open, setOpen] = React.useState(true);
+  const classes = useStyles();
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -14,7 +35,7 @@ export default function SimpleSnackbar({ success, userName }) {
     setOpen(false);
   };
 
-  console.log("nameeeeeeeeeeeeeee", userName)
+  console.log("nameeeeeeeeeeeeeee", userName);
   return (
     <div>
       <Snackbar
@@ -22,10 +43,17 @@ export default function SimpleSnackbar({ success, userName }) {
           vertical: "bottom",
           horizontal: "center"
         }}
+        onExited={handleClose}
+        TransitionComponent={TransitionUp}
         open={open}
-        autoHideDuration={7000}
+        autoHideDuration={6000}
         onClose={handleClose}
-        message={success?`I got your message, Thank you  for getting in touch!` :"An error occured, please try again or contact me usgin other method"}
+        className={success ? classes.success : classes.failed}
+        message={
+          success
+            ? `I got your message, Thank you  for getting in touch!`
+            : "An error occured, please try again or contact me usgin other method"
+        }
         action={
           <React.Fragment>
             <IconButton
