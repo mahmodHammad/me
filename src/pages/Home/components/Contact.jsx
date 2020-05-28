@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -9,13 +9,6 @@ import Container from "@material-ui/core/Container";
 const submitURL =
   "https://script.google.com/macros/s/AKfycbwjbT_B94deK2f766IkAEpp2XIkPf83ld1GQ05QNVu_gWCVBMCG/exec";
 
-const submitForm = () => {
-  const url = `${submitURL}?callback=ctrlq&name=MahmoudHammad&email=Hodaman2012@gmail.com`;
-
-  fetch(url, { method: "POST", mode:"no-cors" })
-    .then(response => console.log("Success!", response))
-    .catch(error => console.error("Error!", error.message));
-};
 const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: 60,
@@ -68,6 +61,37 @@ const useStyles = makeStyles(theme => ({
 
 export default function Navbar() {
   const classes = useStyles();
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [message, setmessage] = useState("");
+
+  const handleMailChange = ({ currentTarget }) => {
+    const mail = currentTarget.value;
+    setemail(mail);
+    console.log(currentTarget.value);
+  };
+
+  const handleNameChange = ({ currentTarget }) => {
+    const name = currentTarget.value;
+    setname(name);
+    console.log(currentTarget.value);
+  };
+  const handleMessageChange = ({ currentTarget }) => {
+    const message = currentTarget.value;
+    setmessage(message);
+    console.log(currentTarget.value);
+  };
+
+  const submitForm = () => {
+    const url = `${submitURL}?callback=ctrlq&name=${name}&email=${email}&message=${message}&date=${new Date()}`;
+
+    fetch(url, { method: "POST", mode: "no-cors" })
+      .then(response => {
+        console.log("Success!", response);
+      })
+      .catch(error => console.error("Error!", error.message));
+  };
+
   return (
     <div id="contact" className={classes.root}>
       <Container maxWidth="lg">
@@ -88,6 +112,8 @@ export default function Navbar() {
           <Grid justify="center" container>
             <Grid className={classes.inputContainer} item xs={12} md={6}>
               <TextField
+                value={name}
+                onChange={handleNameChange}
                 name="Name"
                 className={classes.input}
                 fullWidth
@@ -97,6 +123,8 @@ export default function Navbar() {
             </Grid>
             <Grid className={classes.inputContainer} item xs={12} md={6}>
               <TextField
+                onChange={handleMailChange}
+                value={email}
                 name="Email"
                 className={classes.input}
                 fullWidth
@@ -106,6 +134,8 @@ export default function Navbar() {
             </Grid>
             <Grid className={classes.inputContainer} item xs={12}>
               <TextField
+                value={message}
+                onChange={handleMessageChange}
                 name="message"
                 className={classes.input}
                 fullWidth
