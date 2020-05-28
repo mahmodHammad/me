@@ -6,6 +6,16 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 
+const submitURL =
+  "https://script.google.com/macros/s/AKfycbwjbT_B94deK2f766IkAEpp2XIkPf83ld1GQ05QNVu_gWCVBMCG/exec";
+
+const submitForm = () => {
+  const url = `${submitURL}?callback=ctrlq&name=MahmoudHammad&email=Hodaman2012@gmail.com`;
+
+  fetch(url, { method: "POST", mode:"no-cors" })
+    .then(response => console.log("Success!", response))
+    .catch(error => console.error("Error!", error.message));
+};
 const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: 60,
@@ -31,8 +41,8 @@ const useStyles = makeStyles(theme => ({
   },
   input: {
     color: theme.palette.txt.title,
-    "& .MuiFormLabel-root": { color: theme.palette.txt.title},
-    "& .MuiInputBase-input":{color: theme.palette.txt.body }
+    "& .MuiFormLabel-root": { color: theme.palette.txt.title },
+    "& .MuiInputBase-input": { color: theme.palette.txt.body }
   },
   buttonContainer: { textAlign: "center", marginTop: 20 },
   button: {
@@ -74,10 +84,11 @@ export default function Navbar() {
           contact me.
         </Typography>
 
-        <form action="#">
+        <form action="https://formspree.io/xqkypgqe" method="POST">
           <Grid justify="center" container>
             <Grid className={classes.inputContainer} item xs={12} md={6}>
               <TextField
+                name="Name"
                 className={classes.input}
                 fullWidth
                 label="name"
@@ -86,6 +97,7 @@ export default function Navbar() {
             </Grid>
             <Grid className={classes.inputContainer} item xs={12} md={6}>
               <TextField
+                name="Email"
                 className={classes.input}
                 fullWidth
                 label="Email"
@@ -94,6 +106,7 @@ export default function Navbar() {
             </Grid>
             <Grid className={classes.inputContainer} item xs={12}>
               <TextField
+                name="message"
                 className={classes.input}
                 fullWidth
                 multiline={true}
@@ -103,7 +116,12 @@ export default function Navbar() {
               />
             </Grid>
             <Grid className={classes.buttonContainer} item xs={5} lg={3} md={4}>
-              <Button fullWidth className={classes.button} variant="outlined">
+              <Button
+                onClick={submitForm}
+                fullWidth
+                className={classes.button}
+                variant="outlined"
+              >
                 Submit
               </Button>
             </Grid>
