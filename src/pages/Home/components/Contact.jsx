@@ -30,9 +30,9 @@ const useStyles = makeStyles(theme => ({
     padding: 20
   },
   input: {
-    color: theme.palette.txt.body,
-    "& .MuiFormLabel-root": { color: theme.palette.text.body },
-    "& .MuiInputBase-input":{color: theme.palette.text.body }
+    color: theme.palette.txt.title,
+    "& .MuiFormLabel-root": { color: theme.palette.txt.title},
+    "& .MuiInputBase-input":{color: theme.palette.txt.body }
   },
   buttonContainer: { textAlign: "center", marginTop: 20 },
   button: {
