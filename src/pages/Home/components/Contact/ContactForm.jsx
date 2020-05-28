@@ -15,7 +15,12 @@ const useStyles = makeStyles(theme => ({
   input: {
     color: theme.palette.txt.title,
     "& .MuiFormLabel-root": { color: theme.palette.txt.title },
-    "& .MuiInputBase-input": { color: theme.palette.txt.body }
+    "& .MuiInputBase-input": {
+      color: theme.palette.txt.body,
+      },
+      "& .MuiInput-underline:before":{
+        borderBottom:`1px solid ${theme.palette.div.default}`
+      }
   },
   buttonContainer: { textAlign: "center", marginTop: 20 },
   button: {
@@ -40,18 +45,15 @@ export default function Navbar() {
   const handleMailChange = ({ currentTarget }) => {
     const mail = currentTarget.value;
     setemail(mail);
-    console.log(currentTarget.value);
   };
 
   const handleNameChange = ({ currentTarget }) => {
     const name = currentTarget.value;
     setname(name);
-    console.log(currentTarget.value);
   };
   const handleMessageChange = ({ currentTarget }) => {
     const message = currentTarget.value;
     setmessage(message);
-    console.log(currentTarget.value);
   };
 
   const submitForm = () => {
@@ -94,7 +96,7 @@ export default function Navbar() {
             className={classes.input}
             fullWidth
             label="Email"
-            placeholder="enter your E-Mail"
+            placeholder="enter your Email"
           />
         </Grid>
         <Grid className={classes.inputContainer} item xs={12}>
@@ -105,7 +107,7 @@ export default function Navbar() {
             className={classes.input}
             fullWidth
             multiline={true}
-            rows={4}
+            rows={3}
             label="Message"
             placeholder="enter your Message"
           />
