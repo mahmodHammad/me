@@ -7,7 +7,7 @@ import { goToAnchor } from "react-scrollable-anchor";
 import Intro from "./components/Intro";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects/Projects";
-import Contact from "./components/Contact";
+import Contact from "./components/Contact/Contact";
 const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: 100
