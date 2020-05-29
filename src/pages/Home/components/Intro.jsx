@@ -25,8 +25,9 @@ const useStyles = makeStyles(theme => ({
     marginTop: 40,
     borderRadius: 50,
     color: "#fff",
-    padding: "14px 32px",
-    fontSize: "1.2rem"
+    padding: "12px 34px",
+    fontSize: "1.2rem",
+    textShadow:"1px 1px 2px #0005"
   },
   img: {
     height: 400,

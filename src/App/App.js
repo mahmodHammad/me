@@ -11,31 +11,33 @@ import Footer from "./../shared/Footer/Footer";
 import Home from "../pages/Home/Home";
 import Projects from "../pages/Projects/Project";
 // #FFC107 light
+const defaultMode = {
+  primary: {
+    main: "#eee"
+  },
+  secondary: {
+    light: "#FFC409 ",
+    main: "#FFa409",
+    contrastText: "#000"
+  },
+  background: {
+    default: "#333"
+  },
+  txt: {
+    title: "#fff",
+    body: "#d9d9d9"
+  },
+  navbar: { default: "#111" },
+  footer: { bg: "#171717", txt: "#FFC107", cc: "#111" },
+  card: { bg: "#111" },
+  contact: { bg: "#111" },
+  div: { default: "#666" }
+};
+
 export default class App extends Component {
   state = {
-    cutumeTheme: {
-      primary: {
-        main: "#333"
-      },
-      secondary: {
-        light: "#FFC409 ",
-        main: "#F89500",
-        contrastText: "#000"
-      },
-      background: {
-        default: "#fafafa"
-      },
-      txt: {
-        title: "#333",
-        body: "#666"
-      },
-      navbar: { default: "#fff" },
-      footer: { bg: "#2b2b2b", txt: "#FFC107", cc: "#181818" },
-      card: { bg: "#fff" },
-      contact: { bg: "#f1f1f1" },
-      div: { default: "#d1d1d1" }
-    },
-    isLightMode: true
+    cutumeTheme: defaultMode,
+    isLightMode: false
   };
   theme = createMuiTheme({
     palette: this.state.cutumeTheme
@@ -84,11 +86,11 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    let gettodo = window.localStorage.getItem("todo");
-    if (gettodo) {
-      let todo = JSON.parse(gettodo);
-      this.setState({ todo });
-    }
+    // let getmode = window.localStorage.getItem("mode");
+    // if (getmode) {
+    //   isLightMode = JSON.parse(getmode);
+    // }
+    // this.setState({ isLightMode });
     configureAnchors({ scrollDuration: 0 });
   }
 
