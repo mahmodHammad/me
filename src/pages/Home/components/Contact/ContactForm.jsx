@@ -27,7 +27,8 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.txt.body,
     borderColor: theme.palette.txt.body,
     "&:hover": {
-      color: "#fff",
+      color: "#000",
+      fontWeight:"bold",
       background: theme.palette.secondary.main,
       borderColor: "#0000"
     }
@@ -84,7 +85,7 @@ export default function Navbar() {
             name="Name"
             className={classes.input}
             fullWidth
-            label="name"
+            label="Name"
             placeholder="enter your name"
           />
         </Grid>

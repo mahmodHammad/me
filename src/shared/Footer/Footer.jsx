@@ -23,9 +23,25 @@ const useStyles = makeStyles(theme => ({
   },
   icons: {
     color: theme.palette.footer.txt,
-    margin: "0 6px",
+    fontSize:28,
+    margin: "0 16px",
     "&:hover": {
       color: "#fff"
+    }
+  },
+  li: {
+    "&:hover": {
+      color: "#0e76a8"
+    }
+  },
+  fb: {
+    "&:hover": {
+      color: "#6267f2"
+    }
+  },
+  tw: {
+    "&:hover": {
+      color: "#00acee"
     }
   },
   connect: {
@@ -33,12 +49,17 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center"
   },
   title: {
+    padding: 7,
     color: "#bfbfbf",
     fontSize: "0.9rem"
   },
   "@media (max-width: 600px)": {
     title: {
       fontSize: "0.7rem"
+    },
+    icons: {
+      margin: "0 7px",
+      fontSize:25
     }
   }
 }));
@@ -55,23 +76,31 @@ export default function Navbar() {
         <IconButton
           component="a"
           href="https://www.linkedin.com/in/mahmoud-h-776145128/"
-          target="balnk"
+          target="_blank"
         >
-          <LI className={classes.icons} />
+          <LI className={`${classes.icons} ${classes.li}`} />
         </IconButton>
 
         <IconButton
           component="a"
           href="https://github.com/mahmodHammad"
-          target="balnk"
+          target="_blank"
         >
           <GH className={classes.icons} />
         </IconButton>
-        <IconButton component="a" href="#">
-          <FB className={classes.icons} />
+        <IconButton
+          component="a"
+          href="https://www.facebook.com/mahmod.hamad.33"
+          target="_blank"
+        >
+          <FB className={`${classes.icons} ${classes.fb}`} />
         </IconButton>
-        <IconButton component="a" href="#">
-          <Twitter className={classes.icons} />
+        <IconButton
+          component="a"
+          href="https://twitter.com/hodaman2012"
+          target="_blank"
+        >
+          <Twitter className={`${classes.icons} ${classes.tw}`} />
         </IconButton>
       </div>
       <div className={classes.cc}>
@@ -81,7 +110,7 @@ export default function Navbar() {
           className={classes.title}
           gutterBottom
         >
-          © 2020 Mahmoud Hammad. All rights reserved.
+          © 2020 Mahmoud Hammad, All rights reserved.
         </Typography>
       </div>
     </div>
