@@ -67,11 +67,9 @@ export default function Navbar() {
         setmessage("");
         setsubmitLoading(0);
         setsuccess(1);
-        console.log("Success!", response);
       })
       .catch(error => {
         setsuccess(0);
-        console.error("Error!", error.message);
       });
   };
 
@@ -86,7 +84,7 @@ export default function Navbar() {
             className={classes.input}
             fullWidth
             label="Name"
-            placeholder="enter your name"
+            placeholder="Enter your name"
           />
         </Grid>
         <Grid className={classes.inputContainer} item xs={12} md={6}>
@@ -97,7 +95,7 @@ export default function Navbar() {
             className={classes.input}
             fullWidth
             label="Email"
-            placeholder="enter your Email"
+            placeholder="Enter your Email"
           />
         </Grid>
         <Grid className={classes.inputContainer} item xs={12}>
@@ -110,7 +108,7 @@ export default function Navbar() {
             multiline={true}
             rows={3}
             label="Message"
-            placeholder="enter your Message"
+            placeholder="Enter your Message"
           />
         </Grid>
         <Grid className={classes.buttonContainer} item xs={5} lg={3} md={4}>

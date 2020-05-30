@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: 60,
     paddingBottom: 60,
-    marginTop: 120,
+    marginTop: 140,
     background: theme.palette.contact.bg
   },
   header: {
@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
   body: {
     color: theme.palette.txt.body,
+    padding:12,
     marginTop: 5,
     textAlign: "center",
     marginBottom: 10,

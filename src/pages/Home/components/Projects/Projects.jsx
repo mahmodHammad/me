@@ -8,7 +8,7 @@ import ProjectCard from "./ProjectCard";
 import fackProjects from "../../../../config/Projects";
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: 70,
+    marginTop: 80,
     paddingTop: 20
   },
   header: {
@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
   },
   body: {
     fontSize: "1.2rem",
-
     color: theme.palette.txt.body,
     marginTop: 5,
     textAlign: "center",
