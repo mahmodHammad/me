@@ -13,3 +13,5 @@
 1.  npm start
 
 1. Open http://localhost:3000 to view it in the browser.
+
+#### Don't forget to visit `projects` branch 
