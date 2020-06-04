@@ -16,11 +16,11 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.txt.title,
     "& .MuiFormLabel-root": { color: theme.palette.txt.title },
     "& .MuiInputBase-input": {
-      color: theme.palette.txt.body,
-      },
-      "& .MuiInput-underline:before":{
-        borderBottom:`1px solid ${theme.palette.div.default}`
-      }
+      color: theme.palette.txt.body
+    },
+    "& .MuiInput-underline:before": {
+      borderBottom: `1px solid ${theme.palette.div.default}`
+    }
   },
   buttonContainer: { textAlign: "center", marginTop: 20 },
   button: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     borderColor: theme.palette.txt.body,
     "&:hover": {
       color: "#000",
-      fontWeight:"bold",
+      fontWeight: "bold",
       background: theme.palette.secondary.main,
       borderColor: "#0000"
     }
@@ -40,20 +40,35 @@ export default function Navbar() {
   const [userName, setname] = useState("");
   const [email, setemail] = useState("");
   const [message, setmessage] = useState("");
+  const [errors, seterrors] = useState({});
   const [submitLoading, setsubmitLoading] = useState(0);
   const [success, setsuccess] = useState(undefined);
 
+  function validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return !re.test(String(email).toLowerCase());
+  }
+  function validateString(input) {
+    return  String(input).trim().length<2;
+  }
+
   const handleMailChange = ({ currentTarget }) => {
     const mail = currentTarget.value;
+    const error = validateEmail(mail);
+    seterrors({ "Email": error });
     setemail(mail);
   };
 
   const handleNameChange = ({ currentTarget }) => {
     const name = currentTarget.value;
+    const error=validateString(name)
+    seterrors({ "Name": error });
     setname(name);
   };
   const handleMessageChange = ({ currentTarget }) => {
     const message = currentTarget.value;
+    const error=validateString(message)
+    seterrors({ "Message": error });
     setmessage(message);
   };
 
@@ -74,7 +89,7 @@ export default function Navbar() {
   };
 
   return (
-    <form action="https://formspree.io/xqkypgqe" method="POST">
+    <form>
       <Grid justify="center" container>
         <Grid className={classes.inputContainer} item xs={12} md={6}>
           <TextField
@@ -84,17 +99,19 @@ export default function Navbar() {
             className={classes.input}
             fullWidth
             label="Name"
+            error={errors.Name}
             placeholder="Enter your name"
           />
         </Grid>
         <Grid className={classes.inputContainer} item xs={12} md={6}>
           <TextField
-            onChange={handleMailChange}
             value={email}
+            onChange={handleMailChange}
             name="Email"
             className={classes.input}
             fullWidth
             label="Email"
+            error={errors.Email}
             placeholder="Enter your Email"
           />
         </Grid>
@@ -107,6 +124,7 @@ export default function Navbar() {
             fullWidth
             multiline={true}
             rows={3}
+            error={errors.Message}
             label="Message"
             placeholder="Enter your Message"
           />
@@ -118,9 +136,8 @@ export default function Navbar() {
             className={classes.button}
             variant="outlined"
           >
-            {submitLoading ? "pending..." : "submit"}
+            {submitLoading ? "pending..." : "Submit"}
           </Button>
-          {console.log("name is", userName)}
         </Grid>
         {success !== undefined ? (
           <FeedBack success={success} userName={userName} />
