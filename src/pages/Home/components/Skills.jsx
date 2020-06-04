@@ -41,14 +41,14 @@ const useStyles = makeStyles(theme => ({
   lastcardItem: { borderLeft:  `solid 1px ${theme.palette.div.default}` },
   "@media (max-width: 600px)": {
     root: {
-      padding: 10,
+      padding: 0,
       marginTop: 0
     },
     lastcardItem: {
       marginTop: 30
     },
     cardItem: {
-      padding: "50px 25px"
+      padding: "40px 15px"
     }
   }, 
   "@media (max-width: 960px)": {

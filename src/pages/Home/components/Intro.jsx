@@ -30,19 +30,18 @@ const useStyles = makeStyles(theme => ({
     textShadow:"1px 1px 2px #0005"
   },
   img: {
-    height: 400,
-    width: 300,
+    height: "100%",
     borderRadius: 3
   },
   imgCover: {
     // marginTop: 30,
     width: "100%",
-    height: 400,
-    padding: 10,
+    height: 320,
+    padding: 20,
     textAlign: "center",
-    margin: "auto",
+    margin: "20px auto",
     borderRadius: 4,
-    transition: "ease-in-out 0.2s",
+    transition: "ease-in-out 0.3s",
     "&:hover": {
       paddingTop: 0
     }
@@ -68,6 +67,10 @@ const useStyles = makeStyles(theme => ({
     intro: { paddingRight: 0 }
   },
   "@media (max-width: 600px)": {
+    imgCover:{
+      marginTop:40,
+      height:260,
+    },
     header: {
       fontSize: "2.2rem"
     },
