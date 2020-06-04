@@ -172,7 +172,7 @@ export default function Navbar() {
           </Button>
         </Grid>
         {success !== undefined ? (
-          <FeedBack success={success} userName={userName} />
+          <FeedBack success={success} userName={userName} setsuccess={setsuccess} />
         ) : (
           <span></span>
         )}

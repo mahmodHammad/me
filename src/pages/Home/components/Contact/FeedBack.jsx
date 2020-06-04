@@ -23,11 +23,12 @@ function TransitionUp(props) {
   return <Slide {...props} direction="up" />;
 }
 
-export default function SimpleSnackbar({ success, userName }) {
+export default function SimpleSnackbar({ success, userName, setsuccess }) {
   const [open, setOpen] = React.useState(true);
   const classes = useStyles();
 
   const handleClose = (event, reason) => {
+    setsuccess(undefined)
     if (reason === "clickaway") {
       return;
     }
@@ -35,7 +36,6 @@ export default function SimpleSnackbar({ success, userName }) {
     setOpen(false);
   };
 
-  console.log("nameeeeeeeeeeeeeee", userName);
   return (
     <div>
       <Snackbar
@@ -48,9 +48,9 @@ export default function SimpleSnackbar({ success, userName }) {
         open={open}
         autoHideDuration={6000}
         onClose={handleClose}
-        className={success===1 ? classes.success : classes.failed}
+        className={success === 1 ? classes.success : classes.failed}
         message={
-          success===1
+          success === 1
             ? `I got your message, Thank you  for getting in touch!`
             : success
         }
