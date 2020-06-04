@@ -80,14 +80,16 @@ export default function Navbar() {
     const AllErrors = Object.keys(errors);
 
     // check clicking on all fields
-    if (AllErrors.length < 2) {
+    if (AllErrors.length < 3) {
       error = { status: true, message: "Please fill All input fields" };
     } else {
       const RealErrors = AllErrors.filter(e => errors[e] === true);
       if (RealErrors.length > 0) {
         error = {
           status: true,
-          message: `${String(AllErrors)} fields are not valid`
+          message: `${String(AllErrors)} fields ${
+            RealErrors.length > 1 ? "are" : "is"
+          } not valid`
         };
       }
     }
@@ -172,7 +174,11 @@ export default function Navbar() {
           </Button>
         </Grid>
         {success !== undefined ? (
-          <FeedBack success={success} userName={userName} setsuccess={setsuccess} />
+          <FeedBack
+            success={success}
+            userName={userName}
+            setsuccess={setsuccess}
+          />
         ) : (
           <span></span>
         )}
