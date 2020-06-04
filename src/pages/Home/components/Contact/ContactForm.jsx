@@ -40,40 +40,51 @@ export default function Navbar() {
   const [userName, setname] = useState("");
   const [email, setemail] = useState("");
   const [message, setmessage] = useState("");
-  const [errors, seterrors] = useState({});
+  const [errors, seterrors] = useState({
+    Name: false,
+    Email: false,
+    Message: false
+  });
   const [submitLoading, setsubmitLoading] = useState(0);
   const [success, setsuccess] = useState(undefined);
 
   function validateEmail(email) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return !re.test(String(email).toLowerCase());
+    const validation = !re.test(String(email).toLowerCase());
+    let err = { ...errors };
+    console.log("ERRR", err);
+    err.Email = validation;
+    seterrors(err);
+
   }
-  function validateString(input) {
-    return  String(input).trim().length<2;
+  function validateString(input, inputName) {
+    const validation = String(input).trim().length < 2;
+    let err = { ...errors };
+    console.log("ERRR", err);
+    err[inputName] = validation;
+    seterrors(err);
   }
 
   const handleMailChange = ({ currentTarget }) => {
     const mail = currentTarget.value;
-    const error = validateEmail(mail);
-    seterrors({ "Email": error });
+    validateEmail(mail)
     setemail(mail);
   };
 
   const handleNameChange = ({ currentTarget }) => {
     const name = currentTarget.value;
-    const error=validateString(name)
-    seterrors({ "Name": error });
+    validateString(name,"Name");
     setname(name);
   };
   const handleMessageChange = ({ currentTarget }) => {
     const message = currentTarget.value;
-    const error=validateString(message)
-    seterrors({ "Message": error });
+    validateString(message,"Message");
     setmessage(message);
   };
 
   const submitForm = () => {
     const url = `${submitURL}?callback=ctrlq&name=${userName}&email=${email}&message=${message}&date=${new Date()}`;
+
     setsubmitLoading(1);
     fetch(url, { method: "POST", mode: "no-cors" })
       .then(response => {
@@ -87,13 +98,13 @@ export default function Navbar() {
         setsuccess(0);
       });
   };
-
   return (
     <form>
       <Grid justify="center" container>
         <Grid className={classes.inputContainer} item xs={12} md={6}>
           <TextField
             value={userName}
+            onFocus={handleNameChange}
             onChange={handleNameChange}
             name="Name"
             className={classes.input}
@@ -106,6 +117,7 @@ export default function Navbar() {
         <Grid className={classes.inputContainer} item xs={12} md={6}>
           <TextField
             value={email}
+            onFocus={handleMailChange}
             onChange={handleMailChange}
             name="Email"
             className={classes.input}
@@ -118,6 +130,7 @@ export default function Navbar() {
         <Grid className={classes.inputContainer} item xs={12}>
           <TextField
             value={message}
+            onFocus={handleMessageChange}
             onChange={handleMessageChange}
             name="message"
             className={classes.input}
@@ -135,6 +148,7 @@ export default function Navbar() {
             fullWidth
             className={classes.button}
             variant="outlined"
+            disabled={false}
           >
             {submitLoading ? "pending..." : "Submit"}
           </Button>
