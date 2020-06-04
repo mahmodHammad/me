@@ -48,11 +48,11 @@ export default function SimpleSnackbar({ success, userName }) {
         open={open}
         autoHideDuration={6000}
         onClose={handleClose}
-        className={success ? classes.success : classes.failed}
+        className={success===1 ? classes.success : classes.failed}
         message={
-          success
+          success===1
             ? `I got your message, Thank you  for getting in touch!`
-            : "An error occured, please try again or contact me usgin other method"
+            : success
         }
         action={
           <React.Fragment>

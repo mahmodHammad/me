@@ -40,11 +40,7 @@ export default function Navbar() {
   const [userName, setname] = useState("");
   const [email, setemail] = useState("");
   const [message, setmessage] = useState("");
-  const [errors, seterrors] = useState({
-    Name: false,
-    Email: false,
-    Message: false
-  });
+  const [errors, seterrors] = useState({});
   const [submitLoading, setsubmitLoading] = useState(0);
   const [success, setsuccess] = useState(undefined);
 
@@ -52,51 +48,73 @@ export default function Navbar() {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const validation = !re.test(String(email).toLowerCase());
     let err = { ...errors };
-    console.log("ERRR", err);
     err.Email = validation;
     seterrors(err);
-
   }
   function validateString(input, inputName) {
     const validation = String(input).trim().length < 2;
     let err = { ...errors };
-    console.log("ERRR", err);
     err[inputName] = validation;
     seterrors(err);
   }
 
   const handleMailChange = ({ currentTarget }) => {
     const mail = currentTarget.value;
-    validateEmail(mail)
+    validateEmail(mail);
     setemail(mail);
   };
 
   const handleNameChange = ({ currentTarget }) => {
     const name = currentTarget.value;
-    validateString(name,"Name");
+    validateString(name, "Name");
     setname(name);
   };
   const handleMessageChange = ({ currentTarget }) => {
     const message = currentTarget.value;
-    validateString(message,"Message");
+    validateString(message, "Message");
     setmessage(message);
+  };
+
+  const validateSubmit = () => {
+    let error = { status: false, message: "" };
+    const AllErrors = Object.keys(errors);
+
+    // check clicking on all fields
+    if (AllErrors.length < 2) {
+      error = { status: true, message: "Please fill All input fields" };
+    } else {
+      const RealErrors = AllErrors.filter(e => errors[e] === true);
+      if (RealErrors.length > 0) {
+        error = {
+          status: true,
+          message: `${String(AllErrors)} fields are not valid`
+        };
+      }
+    }
+    return error;
   };
 
   const submitForm = () => {
     const url = `${submitURL}?callback=ctrlq&name=${userName}&email=${email}&message=${message}&date=${new Date()}`;
-
-    setsubmitLoading(1);
-    fetch(url, { method: "POST", mode: "no-cors" })
-      .then(response => {
-        setname("");
-        setemail("");
-        setmessage("");
-        setsubmitLoading(0);
-        setsuccess(1);
-      })
-      .catch(error => {
-        setsuccess(0);
-      });
+    const validation = validateSubmit();
+    if (validation.status === false) {
+      setsubmitLoading(1);
+      fetch(url, { method: "POST", mode: "no-cors" })
+        .then(response => {
+          setname("");
+          setemail("");
+          setmessage("");
+          setsubmitLoading(0);
+          setsuccess(1);
+        })
+        .catch(error => {
+          setsuccess(
+            "An error occured, please try again or contact me usgin other method"
+          );
+        });
+    } else {
+      setsuccess(validation.message);
+    }
   };
   return (
     <form>
