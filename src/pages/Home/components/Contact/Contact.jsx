@@ -5,9 +5,9 @@ import Container from "@material-ui/core/Container";
 import ContactForm from "./ContactForm";
 import ContactMethods from "./ContactMethods";
 import IconButton from "@material-ui/core/IconButton";
+import Hidden from "@material-ui/core/Hidden";
 import Mail from "../../../../Icons/Mail";
 import GH from "../../../../Icons/GH";
-import FB from "../../../../Icons/FB";
 import Twitter from "../../../../Icons/Twiter";
 import LI from "../../../../Icons/LI";
 
@@ -27,7 +27,8 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 20,
     textAlign: "Left",
     paddingTop: 16,
-    paddingBottom: 16
+    paddingBottom: 16,
+    marginBottom:30
   },
   icons: {
     color: theme.palette.primary.main,
@@ -70,21 +71,21 @@ export default function Navbar() {
   return (
     <div id="contact" className={classes.root}>
       <Container maxWidth="lg">
+        <Typography variant="h1" gutterBottom className={classes.header}>
+          Get in touch
+        </Typography>
+        <Typography variant="h2" gutterBottom className={classes.body}>
+          i would like to create things with fun{" "}
+          <span aria-label="smile" role="img">
+            😄
+          </span>{" "}
+          <br /> Feel free to say hello!
+        </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} lg={10}>
-            <Typography variant="h1" gutterBottom className={classes.header}>
-              Get in touch
-            </Typography>
-            <Typography variant="h2" gutterBottom className={classes.body}>
-              i would like to create things with fun{" "}
-              <span aria-label="smile" role="img">
-                😄
-              </span>{" "}
-              <br /> Feel free to say hello!
-            </Typography>
-
             <ContactForm />
           </Grid>
+          <Hidden mdDown={true}>
           <Grid conteiner item xs={12} lg={2} className={classes.connect}>
             <Grid item xs={12}>
               <IconButton component="a" href="mailto:ma7mod.7ammad@gmail.com">
@@ -112,14 +113,6 @@ export default function Navbar() {
             </Grid>
             <Grid item xs={12}>
               <IconButton component="a" href="mailto:ma7mod.7ammad@gmail.com">
-                <FB className={classes.icons} />
-                <Typography className={classes.iconLable} color="primary">
-                  Facebook
-                </Typography>
-              </IconButton>
-            </Grid>
-            <Grid item xs={12}>
-              <IconButton component="a" href="mailto:ma7mod.7ammad@gmail.com">
                 <Twitter className={classes.icons} />
                 <Typography className={classes.iconLable} color="primary">
                   Twitter
@@ -127,9 +120,14 @@ export default function Navbar() {
               </IconButton>
             </Grid>
           </Grid>
+        </Hidden>
         </Grid>
+
       </Container>
-      <ContactMethods />
+      
+      <Hidden lgUp={true}>
+        <ContactMethods />
+      </Hidden>
     </div>
   );
 }

@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.footer.txt
   },
   cc: {
-    padding: 15,
+    padding: 20,
     background: theme.palette.footer.cc
   },
   title: {
