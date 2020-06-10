@@ -80,7 +80,7 @@ export default function Navbar({ info }) {
               />
             </Typography>
             <Typography variant="body2" className={classes.body} component="p">
-              {info.body.substring(0, 100) + "..."}
+              {info.body.substring(0, 95) + "..."}
             </Typography>
           </CardContent>
         </CardActionArea>

@@ -107,7 +107,7 @@ export default function Navbar() {
           <b>Full-stack web developer / Javascript Lover</b>. <br />
           <span className={classes.exsp}></span>
           <span className={classes.body2}>
-            I create cutom websites to help businesses do better online
+            I create custom websites to help businesses do better online
           </span>
         </Typography>
         <Button

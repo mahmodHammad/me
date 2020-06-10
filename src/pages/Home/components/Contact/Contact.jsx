@@ -2,12 +2,13 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import ContactForm from "./ContactForm"
+import ContactForm from "./ContactForm";
+import ContactMethods from "./ContactMethods";
 
 const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: 60,
-    paddingBottom: 60,
+    paddingBottom: 0,
     marginTop: 140,
     background: theme.palette.contact.bg
   },
@@ -19,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   body: {
     color: theme.palette.txt.body,
-    padding:12,
+    padding: 12,
     marginTop: 5,
     textAlign: "center",
     marginBottom: 10,
@@ -55,9 +56,9 @@ export default function Navbar() {
           However, if you have other request or question. don't hesitate to
           contact me.
         </Typography>
-
-       <ContactForm/>
+        <ContactForm />
       </Container>
+        <ContactMethods />
     </div>
   );
 }
