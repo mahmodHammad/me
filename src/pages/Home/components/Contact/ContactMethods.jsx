@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.footer.txt
   },
   icons: {
-    color: theme.palette.footer.txt,
+    color: theme.palette.contact.icons,
     fontSize:28,
     margin: "0 16px",
     "&:hover": {

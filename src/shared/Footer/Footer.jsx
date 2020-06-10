@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     padding: 7,
-    color: "#bfbfbf",
+    color:  theme.palette.footer.txt,
     fontSize: "0.9rem"
   },
   "@media (max-width: 600px)": {

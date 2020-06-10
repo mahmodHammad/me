@@ -15,20 +15,19 @@ import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingTop: 90,
-    paddingBottom: 10,
+    paddingTop: 80,
     marginTop: 140,
     background: theme.palette.contact.bg
   },
   iconLable: { marginLeft: 15 },
   connect: {
-    background: "linear-gradient(90deg, #1f1f1f 5%, #0000 95%)",
-    borderLeft: `1px solid ${theme.palette.primary.main}`,
+    background: `linear-gradient(90deg, ${theme.palette.contact.methods} 0%, #0000 90%)`,
+    borderLeft: `1px solid ${theme.palette.contact.methods}`,
     borderRadius: 20,
     textAlign: "Left",
     paddingTop: 16,
     paddingBottom: 16,
-    marginBottom:30
+    marginBottom:80
   },
   icons: {
     color: theme.palette.primary.main,
@@ -96,7 +95,7 @@ export default function Navbar() {
               </IconButton>
             </Grid>
             <Grid item xs={12}>
-              <IconButton component="a" href="mailto:ma7mod.7ammad@gmail.com">
+              <IconButton component="a" href="https://www.linkedin.com/in/mahmoud-h-776145128/">
                 <LI className={classes.icons} />{" "}
                 <Typography className={classes.iconLable} color="primary">
                   LinkedIn
@@ -104,7 +103,7 @@ export default function Navbar() {
               </IconButton>
             </Grid>
             <Grid item xs={12}>
-              <IconButton component="a" href="mailto:ma7mod.7ammad@gmail.com">
+              <IconButton component="a" href="https://github.com/mahmodHammad">
                 <GH className={classes.icons} />
                 <Typography className={classes.iconLable} color="primary">
                   Github
@@ -112,7 +111,7 @@ export default function Navbar() {
               </IconButton>
             </Grid>
             <Grid item xs={12}>
-              <IconButton component="a" href="mailto:ma7mod.7ammad@gmail.com">
+              <IconButton component="a" href="https://twitter.com/hodaman2012">
                 <Twitter className={classes.icons} />
                 <Typography className={classes.iconLable} color="primary">
                   Twitter

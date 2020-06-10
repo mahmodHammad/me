@@ -156,7 +156,7 @@ export default function Navbar() {
             className={classes.input}
             fullWidth
             multiline={true}
-            rows={3}
+            rows={4}
             error={errors.Message}
             label="Message"
             placeholder="Enter your Message"
