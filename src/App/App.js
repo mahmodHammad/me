@@ -30,22 +30,23 @@ const defaultMode = {
   navbar: { default: "#111" },
   footer: { bg: "#171717", txt: "#ccc", cc: "#090909" },
   card: { bg: "#111" },
-  contact: { bg: "#111" , methods:"#202020",icons:"#FFC107" },
+  contact: { bg: "#111", methods: "#202020", icons: "#FFC107" },
   div: { default: "#666" }
 };
 
 export default class App extends Component {
   state = {
     cutumeTheme: defaultMode,
-    isLightMode: 0
+    isLightMode: 1
   };
   theme = createMuiTheme({
     palette: this.state.cutumeTheme
   });
 
-  changeTheme = () => {
+  changeTheme = firstTime => {
     const islight = this.state.isLightMode;
     let oldTheme = { ...this.state.cutumeTheme };
+// dark
     if (islight) {
       oldTheme.primary.main = "#eee";
       oldTheme.navbar.default = "#111";
@@ -60,7 +61,9 @@ export default class App extends Component {
       oldTheme.txt.title = "#fff";
       oldTheme.txt.body = "#d9d9d9";
       oldTheme.div.default = "#666";
-    } else {
+    } 
+    // light
+    else {
       oldTheme.primary.main = "#333";
       oldTheme.navbar.default = "#fff";
       oldTheme.background.default = "#fafafa";
@@ -82,9 +85,12 @@ export default class App extends Component {
     this.theme = createMuiTheme({
       palette: this.state.cutumeTheme
     });
+    
+    // prevent rerting the mode for the first time
     this.setState({ isLightMode: !islight });
-    window.localStorage.setItem("mode",!islight )
-
+    if (firstTime!==1) {
+      window.localStorage.setItem("mode", !islight);
+    }
   };
 
   clearLocalStorage = () => {
@@ -95,12 +101,16 @@ export default class App extends Component {
     let getmode = window.localStorage.getItem("mode");
     if (getmode) {
       let isLightMode = JSON.parse(getmode);
-      this.setState({isLightMode})
-    }else{
+      this.setState({ isLightMode:!isLightMode });
+      this.changeTheme(1);
+    
+      console.log(!isLightMode,"isLightMode")
+      console.log(this.state.isLightMode,"state.isLightMode")
+    } else {
       // dark mode by default
-      window.localStorage.setItem("mode",0)
+      window.localStorage.setItem("mode", 0);
     }
-    this.changeTheme()
+    this.changeTheme(1);
     configureAnchors({ scrollDuration: 0 });
   }
 

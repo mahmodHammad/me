@@ -112,7 +112,7 @@ export default function Navbar({ props, themeChange, isLight }) {
               color="inherit"
               aria-label="open drawer"
               edge="start"
-              onClick={themeChange}
+              onClick={()=>themeChange(0)}
             >
               <Brightness4Icon color="primary" />
             </IconButton>
