@@ -37,7 +37,7 @@ const defaultMode = {
 export default class App extends Component {
   state = {
     cutumeTheme: defaultMode,
-    isLightMode: false
+    isLightMode: 0
   };
   theme = createMuiTheme({
     palette: this.state.cutumeTheme
@@ -82,7 +82,9 @@ export default class App extends Component {
     this.theme = createMuiTheme({
       palette: this.state.cutumeTheme
     });
-    this.setState({ isLightMode: !this.state.isLightMode });
+    this.setState({ isLightMode: !islight });
+    window.localStorage.setItem("mode",!islight )
+
   };
 
   clearLocalStorage = () => {
@@ -90,11 +92,15 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    // let getmode = window.localStorage.getItem("mode");
-    // if (getmode) {
-    //   isLightMode = JSON.parse(getmode);
-    // }
-    // this.setState({ isLightMode });
+    let getmode = window.localStorage.getItem("mode");
+    if (getmode) {
+      let isLightMode = JSON.parse(getmode);
+      this.setState({isLightMode})
+    }else{
+      // dark mode by default
+      window.localStorage.setItem("mode",0)
+    }
+    this.changeTheme()
     configureAnchors({ scrollDuration: 0 });
   }
 
