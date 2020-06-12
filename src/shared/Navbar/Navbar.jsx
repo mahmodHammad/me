@@ -50,7 +50,7 @@ function HideOnScroll(props) {
   );
 }
 
-export default function Navbar({ props, themeChange, isLight }) {
+export default function Navbar({ props, changeTheme, isDarkMode }) {
   const classes = useStyles();
   return (
     <div>
@@ -59,18 +59,18 @@ export default function Navbar({ props, themeChange, isLight }) {
           <Toolbar>
             <div className={classes.logoContainer}>
               <IconButton onClick={()=>window.scrollTo(0, 0)} color="inherit" component={Link} to="/" size="large">
-                {isLight ? (
+                {isDarkMode ? (
                   <img
-                    className={classes.logo}
-                    src={LogoLight}
-                    alt="Mahmoud Hammad"
-                  />
+                  className={classes.logo}
+                  src={LogoDark}
+                  alt="Mahmoud Hammad"
+                />
                 ) : (
                   <img
-                    className={classes.logo}
-                    src={LogoDark}
-                    alt="Mahmoud Hammad"
-                  />
+                  className={classes.logo}
+                  src={LogoLight}
+                  alt="Mahmoud Hammad"
+                />
                 )}
               </IconButton>
             </div>
@@ -112,7 +112,7 @@ export default function Navbar({ props, themeChange, isLight }) {
               color="inherit"
               aria-label="open drawer"
               edge="start"
-              onClick={()=>themeChange(0)}
+              onClick={()=>changeTheme(!isDarkMode)}
             >
               <Brightness4Icon color="primary" />
             </IconButton>

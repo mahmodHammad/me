@@ -31,4 +31,28 @@ const light = oldTheme => {
   oldTheme.txt.body = "#666";
   oldTheme.div.default = "#d1d1d1";
 };
-export { light, dark };
+
+const defaultMode = {
+  primary: {
+    main: "#eee"
+  },
+  secondary: {
+    light: "#FFC409 ",
+    main: "#FFa409",
+    contrastText: "#000"
+  },
+  background: {
+    default: "#333"
+  },
+  txt: {
+    title: "#fff",
+    body: "#d9d9d9"
+  },
+  navbar: { default: "#111" },
+  footer: { bg: "#171717", txt: "#ccc", cc: "#090909" },
+  card: { bg: "#111" },
+  contact: { bg: "#111", methods: "#202020", icons: "#FFC107" },
+  div: { default: "#666" }
+};
+
+export { light, dark ,defaultMode };

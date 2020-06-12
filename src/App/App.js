@@ -1,70 +1,51 @@
 import React, { Component } from "react";
 import "./App.css";
-// installed components ---------------------
+// installed components -------------------------
 import { configureAnchors } from "react-scrollable-anchor";
 // Mui Components -------------------------------
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+// My components --------------------------------
 import Navbar from "./../shared/Navbar/Navbar";
 import Footer from "./../shared/Footer/Footer";
 import Home from "../pages/Home/Home";
 import Projects from "../pages/Projects/Project";
-import { dark, light } from "../config/Themes";
-// #FFC107 light
-const defaultMode = {
-  primary: {
-    main: "#eee"
-  },
-  secondary: {
-    light: "#FFC409 ",
-    main: "#FFa409",
-    contrastText: "#000"
-  },
-  background: {
-    default: "#333"
-  },
-  txt: {
-    title: "#fff",
-    body: "#d9d9d9"
-  },
-  navbar: { default: "#111" },
-  footer: { bg: "#171717", txt: "#ccc", cc: "#090909" },
-  card: { bg: "#111" },
-  contact: { bg: "#111", methods: "#202020", icons: "#FFC107" },
-  div: { default: "#666" }
-};
+
+import { dark, light, defaultMode } from "../config/Themes";
 
 export default class App extends Component {
   state = {
     cutumeTheme: defaultMode,
-    isLightMode: 1
+    isDarkMode: true
   };
+  // init
   theme = createMuiTheme({
-    palette: this.state.cutumeTheme
+    palette: defaultMode
   });
 
-  changeTheme = firstTime => {
-    const islight = this.state.isLightMode;
+  applyMode = () => {
+    const isDarkMode = this.state.isDarkMode;
+
+    console.log("apppppppppppply", isDarkMode);
     let oldTheme = { ...this.state.cutumeTheme };
-
-    if (islight) {
-      dark(oldTheme);
-    } else {
-      light(oldTheme);
-    }
-
-    this.setState({ cutumeTheme: oldTheme });
 
     this.theme = createMuiTheme({
       palette: this.state.cutumeTheme
     });
+    this.setState({ cutumeTheme: oldTheme });
 
-    // prevent rerting the mode for the first time
-    this.setState({ isLightMode: !islight });
-    if (firstTime !== 1) {
-      window.localStorage.setItem("mode", !islight);
-    }
+    // prevent reverting the mode for the first time
+  };
+
+  changeTheme = isDarkMode => {
+    const oldTheme = this.state.cutumeTheme;
+
+    if (isDarkMode) dark(oldTheme);
+    else light(oldTheme);
+    this.setState({ isDarkMode });
+    window.localStorage.setItem("mode", isDarkMode);
+    this.applyMode();
   };
 
   clearLocalStorage = () => {
@@ -74,17 +55,19 @@ export default class App extends Component {
   componentDidMount() {
     let getmode = window.localStorage.getItem("mode");
     if (getmode) {
-      let isLightMode = JSON.parse(getmode);
-      this.setState({ isLightMode: !isLightMode });
-      this.changeTheme(1);
+      let isDarkMode = JSON.parse(getmode);
 
-      console.log(!isLightMode, "isLightMode");
-      console.log(this.state.isLightMode, "state.isLightMode");
+      const oldTheme = this.state.cutumeTheme;
+      if (isDarkMode) dark(oldTheme);
+      else light(oldTheme);
+      this.setState({ isDarkMode });
+      this.applyMode();
     } else {
       // dark mode by default
-      window.localStorage.setItem("mode", 0);
+      window.localStorage.setItem("mode", true);
     }
-    this.changeTheme(1);
+    this.applyMode();
+
     configureAnchors({ scrollDuration: 0 });
   }
 
@@ -99,7 +82,6 @@ export default class App extends Component {
         }}
       >
         <MuiThemeProvider theme={theme}>
-          {/* <MuiThemeProvider> */}
           <CssBaseline />
           <div
             className="App"
@@ -107,8 +89,8 @@ export default class App extends Component {
           >
             <BrowserRouter basename={process.env.PUBLIC_URL}>
               <Navbar
-                themeChange={this.changeTheme}
-                isLight={this.state.isLightMode}
+                changeTheme={this.changeTheme}
+                isDarkMode={this.state.isDarkMode}
               />
 
               <Switch>
