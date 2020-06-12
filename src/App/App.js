@@ -43,52 +43,88 @@ export default class App extends Component {
     palette: this.state.cutumeTheme
   });
 
+  darkModePallete = {
+    "primary.main": "#eee",
+    "navbar.default": "#111",
+    "background.default": "#333",
+    "secondary.main": "#FFa409",
+    "card.bg": "#111",
+    "contact.bg": "#111",
+    "contact.methods": "#202020",
+    "contact.icons": "#FFC107",
+    "footer.bg": "#171717",
+    "footer.cc": "#090909",
+    "txt.title": "#fff",
+    "txt.body": "#d9d9d9",
+    "div.default": "#666"
+  };
+
+  darkmode = oldTheme => {
+    let darkmodeKeys= Object.keys(this.darkModePallete)
+    let newMode={...oldTheme}
+    for (const m of darkmodeKeys) {
+// console.log(m)
+      newMode[m]=this.darkModePallete[m]
+    }
+    
+    console.log(darkmodeKeys) 
+    console.log("XXXX",oldTheme)
+    console.log("ZZZZ",newMode)
+    
+    return newMode
+
+    // oldTheme.primary.main = "#eee";
+    // oldTheme.navbar.default = "#111";
+    // oldTheme.background.default = "#333";
+    // oldTheme.secondary.main = "#FFa409";
+    // oldTheme.card.bg = "#111";
+    // oldTheme.contact.bg = "#111";
+    // oldTheme.contact.methods = "#202020";
+    // oldTheme.contact.icons = "#FFC107";
+    // oldTheme.footer.bg = "#171717";
+    // oldTheme.footer.cc = "#090909";
+    // oldTheme.txt.title = "#fff";
+    // oldTheme.txt.body = "#d9d9d9";
+    // oldTheme.div.default = "#666";
+  };
+
+  lightMode = oldTheme => {
+    oldTheme.primary.main = "#333";
+    oldTheme.navbar.default = "#fff";
+    oldTheme.background.default = "#fafafa";
+    oldTheme.secondary.main = "#F89500";
+    oldTheme.card.bg = "#fff";
+    oldTheme.contact.bg = "#f1f1f1";
+    oldTheme.contact.methods = "#fbfbfb";
+    oldTheme.contact.icons = "#ddd";
+    oldTheme.footer.bg = "#2b2b2b";
+    oldTheme.footer.cc = "#222";
+    oldTheme.txt.title = "#fff";
+    oldTheme.txt.body = "#aaa";
+    oldTheme.txt.title = "#333";
+    oldTheme.txt.body = "#666";
+    oldTheme.div.default = "#d1d1d1";
+  };
+
   changeTheme = firstTime => {
     const islight = this.state.isLightMode;
     let oldTheme = { ...this.state.cutumeTheme };
-// dark
+
     if (islight) {
-      oldTheme.primary.main = "#eee";
-      oldTheme.navbar.default = "#111";
-      oldTheme.background.default = "#333";
-      oldTheme.secondary.main = "#FFa409";
-      oldTheme.card.bg = "#111";
-      oldTheme.contact.bg = "#111";
-      oldTheme.contact.methods = "#202020";
-      oldTheme.contact.icons = "#FFC107";
-      oldTheme.footer.bg = "#171717";
-      oldTheme.footer.cc = "#090909";
-      oldTheme.txt.title = "#fff";
-      oldTheme.txt.body = "#d9d9d9";
-      oldTheme.div.default = "#666";
-    } 
-    // light
-    else {
-      oldTheme.primary.main = "#333";
-      oldTheme.navbar.default = "#fff";
-      oldTheme.background.default = "#fafafa";
-      oldTheme.secondary.main = "#F89500";
-      oldTheme.card.bg = "#fff";
-      oldTheme.contact.bg = "#f1f1f1";
-      oldTheme.contact.methods = "#fbfbfb";
-      oldTheme.contact.icons = "#ddd";
-      oldTheme.footer.bg = "#2b2b2b";
-      oldTheme.footer.cc = "#222";
-      oldTheme.txt.title = "#fff";
-      oldTheme.txt.body = "#aaa";
-      oldTheme.txt.title = "#333";
-      oldTheme.txt.body = "#666";
-      oldTheme.div.default = "#d1d1d1";
+      oldTheme={...this.darkmode(oldTheme)}
+    } else {
+      this.lightMode(oldTheme);
     }
+
     this.setState({ cutumeTheme: oldTheme });
 
     this.theme = createMuiTheme({
       palette: this.state.cutumeTheme
     });
-    
+
     // prevent rerting the mode for the first time
     this.setState({ isLightMode: !islight });
-    if (firstTime!==1) {
+    if (firstTime !== 1) {
       window.localStorage.setItem("mode", !islight);
     }
   };
@@ -101,11 +137,11 @@ export default class App extends Component {
     let getmode = window.localStorage.getItem("mode");
     if (getmode) {
       let isLightMode = JSON.parse(getmode);
-      this.setState({ isLightMode:!isLightMode });
+      this.setState({ isLightMode: !isLightMode });
       this.changeTheme(1);
-    
-      console.log(!isLightMode,"isLightMode")
-      console.log(this.state.isLightMode,"state.isLightMode")
+
+      console.log(!isLightMode, "isLightMode");
+      console.log(this.state.isLightMode, "state.isLightMode");
     } else {
       // dark mode by default
       window.localStorage.setItem("mode", 0);
