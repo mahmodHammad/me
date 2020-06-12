@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import avatar from "../Assets/avatar.svg";
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
+import PersonIcon from '@material-ui/icons/Person';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,10 +25,13 @@ const useStyles = makeStyles(theme => ({
   button: {
     marginTop: 40,
     borderRadius: 50,
-    color: "#fff",
-    padding: "12px 34px",
+    padding: "11px 26px",
     fontSize: "1.2rem",
-    textShadow:"1px 1px 2px #0005"
+    textShadow: "1px 1px 2px #0005"
+  },
+  resumeBtn: {
+    color: "#fff",
+    marginRight: 25
   },
   img: {
     height: "100%",
@@ -67,9 +71,9 @@ const useStyles = makeStyles(theme => ({
     intro: { paddingRight: 0 }
   },
   "@media (max-width: 600px)": {
-    imgCover:{
-      marginTop:40,
-      height:260,
+    imgCover: {
+      marginTop: 40,
+      height: 260
     },
     header: {
       fontSize: "2.2rem"
@@ -79,13 +83,21 @@ const useStyles = makeStyles(theme => ({
     },
     body2: { fontSize: "1.1rem" },
     button: {
-      padding: "8px 22px",
+      padding: "9px 18px",
       fontSize: "0.8rem",
       marginBottom: 20,
-      marginTop: 20
+      marginTop: 30
+    },
+    resumeBtn: {
+      marginRight: 14
     },
     exsp: {
       display: "none"
+    }
+  },
+  "@media (max-width: 360px)": {
+    button: {
+      fontSize: "0.7rem"
     }
   }
 }));
@@ -113,13 +125,25 @@ export default function Navbar() {
         <Button
           variant="contained"
           color="secondary"
-          className={classes.button}
+          className={`${classes.button} ${classes.resumeBtn}`}
           size="large"
           component="a"
           href="#projects"
           startIcon={<AccountTreeIcon />}
         >
           My projects
+        </Button>
+        <Button
+          variant="outlined"
+          color="secondary"
+          className={classes.button}
+          size="large"
+          component="a"
+          target="_blank"
+          href="https://drive.google.com/file/d/15BR-DvhbXCf3sPpDYb5T2j9k2J_wIUPD/view"
+          startIcon={<PersonIcon  fontSize="large"/>}
+        >
+          My Resume
         </Button>
       </Grid>
 
