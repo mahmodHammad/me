@@ -1,9 +1,6 @@
-// picture&details
-
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
@@ -13,7 +10,7 @@ import backend from "../Assets/frontend.svg";
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 30,
-    marginTop: 20
+    marginTop: 0
   },
   header: {
     fontSize: "1.6rem",
@@ -25,7 +22,8 @@ const useStyles = makeStyles(theme => ({
     marginTop: 5
   },
   paper: {
-    borderRadius: 10
+    borderRadius: 10,
+    background: theme.palette.card.bg
   },
   cardItem: {
     textAlign: "center",
@@ -40,17 +38,21 @@ const useStyles = makeStyles(theme => ({
   secHeader: {
     marginTop: 30
   },
-  lastcardItem: { borderLeft: "solid 1px #ddd" },
+  lastcardItem: { borderLeft:  `solid 1px ${theme.palette.div.default}` },
   "@media (max-width: 600px)": {
     root: {
-      marginTop: 80
+      padding: 0,
+      marginTop: 0
     },
     lastcardItem: {
       marginTop: 30
+    },
+    cardItem: {
+      padding: "40px 15px"
     }
-  },
+  }, 
   "@media (max-width: 960px)": {
-    lastcardItem: { borderLeft: "none", borderTop: "solid 1px #ddd" }
+    lastcardItem: { borderLeft: "none", borderTop: `solid 1px ${theme.palette.div.default}`}
   }
 }));
 
@@ -81,7 +83,6 @@ export default function Navbar() {
             <Typography variant="body1" className={classes.body}>
               HTML5, CSS3, Sass, JavaScript, ES6
             </Typography>
-
             <Typography
               gutterBottom
               variant="h6"

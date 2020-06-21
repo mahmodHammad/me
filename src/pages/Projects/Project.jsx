@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react";
-// import Sidebar from "./Sidebar/Sidebar";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
-
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import Slide from "@material-ui/core/Slide";
-import MenuIcon from "@material-ui/icons/Menu";
-import AllProjects from "../../config/Projects";
-import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 
+import AllProjects from "../../config/Projects";
+
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import GH from "../../Icons/GH";
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 10,
@@ -29,14 +25,15 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 5
   },
   header: {
-    fontSize: "2.8rem",
+    fontSize: "2.4rem",
     fontWeight: "bold",
     textAlign: "center",
     color: theme.palette.txt.title
   },
+  TechHeader: { fontSize: "1.4rem", letterSpacing: 1, marginTop: 7 },
   body: {
+    fontSize: "1.2rem",
     color: theme.palette.txt.body,
-    marginTop: 30,
     textAlign: "left"
   },
   techUsedHeader: { color: theme.palette.txt.title, fontSize: "1.6rem" },
@@ -45,25 +42,22 @@ const useStyles = makeStyles(theme => ({
   logoIcon: {
     width: 40,
     height: 40,
+    color: "#222"
   },
   button: {
     textDecoration: "none",
     color: "#fff",
     margin: "30px 20px",
+    textShadow:"1px 1px 2px #0005",
     "&:hover": {
       textDecoration: "none"
     }
+  },
+  "@media (max-width: 600px)": {
+    root: { paddingTop: 130 },
+    header: {fontSize: "1.8rem"},
+    TechHeader:{fontSize:"1.2rem"}
   }
-  //   "@media (max-width: 600px)": {
-  //     study: {
-  //       fontSize: "0.6rem",
-  //       padding: "2px 6px"
-  //     },
-  //     logoText: { fontSize: "0.8rem" },
-  //     logo:{
-  //       marginLeft:-10
-  //     }
-  //   }
 }));
 
 export default function Projec({ match }) {
@@ -73,8 +67,6 @@ export default function Projec({ match }) {
   const [info, setinfo] = useState({});
   useEffect(() => {
     const info = AllProjects.find(e => e.id === projId);
-
-    console.log(info);
     setinfo(info);
   });
 
@@ -86,8 +78,13 @@ export default function Projec({ match }) {
             <Typography align="center" className={classes.header} variant="h1">
               {info.title}
             </Typography>
-            <Typography color="secondary" align="center" variant="h6">
-              {info.Technologies.map(e => e + ", ")}
+            <Typography
+              color="secondary"
+              align="center"
+              variant="body1"
+              className={classes.TechHeader}
+            >
+              {info.Technologies.map((e,index,arr) => `${e}${index===arr.length-1?"":"-"}` )}
             </Typography>
 
             {info.links.gitHub !== undefined ? (
@@ -96,35 +93,38 @@ export default function Projec({ match }) {
                 href={info.links.gitHub}
                 target="_blank"
               >
-                <GH
-                  className={classes.logoIcon}
-                  color="primary"
-                  fontSize="large"
-                />
+                <GH className={classes.logoIcon} fontSize="large" />
               </IconButton>
             ) : (
               <span></span>
             )}
-            {info.links.gitHub !== undefined ? (
-              <Button
-                className={classes.button}
-                component={Link}
-                href={info.links.gitHub}
-                target="_blank"
-                fontSize="large"
-                color="secondary"
-                variant="contained"
-                startIcon={<OpenInNewIcon />}
-              >
-                View The Website
-              </Button>
-            ) : (
-              <span></span>
-            )}
+
+            <Button
+              className={classes.button}
+              component={Link}
+              href={info.links.visit}
+              target="_blank"
+              fontSize="large"
+              color="secondary"
+              variant="contained"
+              startIcon={<OpenInNewIcon />}
+            >
+              Visit The Website
+            </Button>
+
             <img src={info.img} className={classes.img} alt="projImg" />
-            <Typography className={classes.body} gutterBottom variant="h5">
-              {info.body}
-            </Typography>
+            <div className={classes.techUsed}>
+              <Typography
+                className={classes.techUsedHeader}
+                gutterBottom
+                variant="h6"
+              >
+                Project details:
+              </Typography>
+              <Typography className={classes.body} gutterBottom variant="h5">
+                {info.body}
+              </Typography>
+            </div>
             <div className={classes.techUsed}>
               <Typography
                 className={classes.techUsedHeader}
@@ -135,7 +135,9 @@ export default function Projec({ match }) {
               </Typography>
               <ul>
                 {info.Technologies.map(t => (
-                  <li className={classes.tech}>{t}</li>
+                  <li key={t} className={classes.tech}>
+                    {t}
+                  </li>
                 ))}
               </ul>
             </div>

@@ -7,59 +7,53 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import avatar from "../Assets/avatar.svg";
-const img =
-  "https://scontent-hbe1-1.xx.fbcdn.net/v/t1.0-9/p720x720/70592083_2381858148598278_978283899513733120_o.jpg?_nc_cat=106&_nc_sid=85a577&_nc_ohc=bqVWERSGLKwAX_1Pe9q&_nc_ht=scontent-hbe1-1.xx&_nc_tp=6&oh=fd87024cdbed82773b569ec449655838&oe=5EDEAF5F";
+import AccountTreeIcon from "@material-ui/icons/AccountTree";
+import PersonIcon from '@material-ui/icons/Person';
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: 30,
-    paddingTop: 100,
-    paddingBottom: 150
+    paddingTop: 140,
+    paddingBottom: 140
     //  border: "solid 1px red"
   },
   header: { fontSize: "3.8rem", marginTop: 40, color: theme.palette.txt.title },
   body: { fontSize: "1.8rem", color: theme.palette.txt.body },
+  body2: { fontSize: "1.6rem" },
+
   intro: { paddingRight: 30 },
   button: {
     marginTop: 40,
     borderRadius: 50,
+    padding: "11px 26px",
+    fontSize: "1.2rem",
+    textShadow: "1px 1px 2px #0005"
+  },
+  resumeBtn: {
     color: "#fff",
-    padding: "14px 32px",
-    fontSize: "1.2rem"
+    marginRight: 25
   },
   img: {
-    height: 400,
-    width: 300,
+    height: "100%",
     borderRadius: 3
   },
   imgCover: {
     // marginTop: 30,
-    width: 322,
-    height: 400,
-    // background: "#222",
-    padding: 10,
+    width: "100%",
+    height: 320,
+    padding: 20,
     textAlign: "center",
-    margin: "auto",
+    margin: "20px auto",
     borderRadius: 4,
-    transition: "ease-in-out 0.2s",
+    transition: "ease-in-out 0.3s",
     "&:hover": {
-      padding: 0
-    }
-  },
-  "@media (max-width: 600px)": {
-    header: {
-      fontSize: "2.4rem"
-    },
-    body: {
-      fontSize: "1.3rem"
-    },
-    button: {
-      padding: "8px 22px",
-      fontSize: "0.8rem"
+      paddingTop: 0
     }
   },
   "@media (max-width:  960px)": {
     root: {
-      padding: 20
+      textAlign: "center",
+      padding: "30px 10px"
     },
     header: {
       fontSize: "2.8rem",
@@ -68,6 +62,7 @@ const useStyles = makeStyles(theme => ({
     body: {
       fontSize: "1.3rem"
     },
+    body2: { fontSize: "1.2rem" },
     button: {
       padding: "10px 24px",
       fontSize: "1rem",
@@ -75,10 +70,34 @@ const useStyles = makeStyles(theme => ({
     },
     intro: { paddingRight: 0 }
   },
-
-  "@media (max-width: 1280px)": {
+  "@media (max-width: 600px)": {
+    imgCover: {
+      marginTop: 40,
+      height: 260
+    },
+    header: {
+      fontSize: "2.2rem"
+    },
+    body: {
+      fontSize: "1.2rem"
+    },
+    body2: { fontSize: "1.1rem" },
+    button: {
+      padding: "9px 18px",
+      fontSize: "0.8rem",
+      marginBottom: 20,
+      marginTop: 30
+    },
+    resumeBtn: {
+      marginRight: 14
+    },
     exsp: {
       display: "none"
+    }
+  },
+  "@media (max-width: 360px)": {
+    button: {
+      fontSize: "0.7rem"
     }
   }
 }));
@@ -94,24 +113,37 @@ export default function Navbar() {
           component="h1"
           gutterBottom
         >
-          Hey, i'm Mahmoud
+          Hey, I'm Mahmoud
         </Typography>
         <Typography className={classes.body} variant="h6" component="h2">
-          <b>Full-stack web developer / Javascript Lover</b>.{" "}
-          <span className={classes.exsp}>
-            <br />
+          <b>Full-stack web developer / Javascript Lover</b>. <br />
+          <span className={classes.exsp}></span>
+          <span className={classes.body2}>
+            I create custom websites to help businesses do better online
           </span>
-          I create cutom websites to help businesses do better online
         </Typography>
         <Button
           variant="contained"
           color="secondary"
-          className={classes.button}
+          className={`${classes.button} ${classes.resumeBtn}`}
           size="large"
           component="a"
           href="#projects"
+          startIcon={<AccountTreeIcon />}
         >
           My projects
+        </Button>
+        <Button
+          variant="outlined"
+          color="secondary"
+          className={classes.button}
+          size="large"
+          component="a"
+          target="_blank"
+          href="https://drive.google.com/file/d/15BR-DvhbXCf3sPpDYb5T2j9k2J_wIUPD/view"
+          startIcon={<PersonIcon  fontSize="large"/>}
+        >
+          My Resume
         </Button>
       </Grid>
 

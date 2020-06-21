@@ -1,76 +1,51 @@
 import React, { Component } from "react";
 import "./App.css";
-// installed components ---------------------
+// installed components -------------------------
 import { configureAnchors } from "react-scrollable-anchor";
 // Mui Components -------------------------------
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+// My components --------------------------------
 import Navbar from "./../shared/Navbar/Navbar";
 import Footer from "./../shared/Footer/Footer";
 import Home from "../pages/Home/Home";
 import Projects from "../pages/Projects/Project";
-// #FFC107 light
+
+import { dark, light, defaultMode } from "../config/Themes";
+
 export default class App extends Component {
   state = {
-    cutumeTheme: {
-      primary: {
-        main: "#333"
-      },
-      secondary: {
-        light: "#FFC409 ",
-        main: "#F89500",
-        contrastText: "#000"
-      },
-      background: {
-        default: "#fafafa"
-      },
-      txt: {
-        title: "#333",
-        body: "#666"
-      },
-      navbar: { default: "#fff" },
-      footer: { bg: "#2b2b2b", txt: "#FFC107" }
-    },
-    isLightMode: true
+    cutumeTheme: defaultMode,
+    isDarkMode: true
   };
+  // init
   theme = createMuiTheme({
-    palette: this.state.cutumeTheme
+    palette: defaultMode
   });
 
-  // XXX will be deprecated XXX
-  // changeThemeOnce = (main, sec, value) => {
-  //   let oldTheme = { ...this.state.cutumeTheme };
-  //   oldTheme[main][sec] = value;
-  //   this.setState({ cutumeTheme: oldTheme });
+  applyMode = () => {
+    const isDarkMode = this.state.isDarkMode;
 
-  //   this.theme = createMuiTheme({
-  //     palette: this.state.cutumeTheme
-  //   });
-  // };
-  footer: { bg: "#2b2b2b", txt: "#FFC107" }
-
-  changeTheme = () => {
-    const islight = this.state.isLightMode;
+    console.log("apppppppppppply", isDarkMode);
     let oldTheme = { ...this.state.cutumeTheme };
-    if (islight) {
-      oldTheme.primary.main = "#eee";
-      oldTheme.navbar.default = "#444";
-      oldTheme.background.default = "#999";
-      oldTheme.footer.bg = "#000";
-    }
-    else{
-      oldTheme.primary.main = "#333";
-      oldTheme.navbar.default = "#fff";
-      oldTheme.background.default = "#fafafa";
-      oldTheme.footer.bg = "#2b2b2b";
-    }
-    this.setState({ cutumeTheme: oldTheme });
 
     this.theme = createMuiTheme({
       palette: this.state.cutumeTheme
     });
-    this.setState({ isLightMode: !this.state.isLightMode });
+    this.setState({ cutumeTheme: oldTheme });
+
+    // prevent reverting the mode for the first time
+  };
+
+  changeTheme = isDarkMode => {
+    const oldTheme = this.state.cutumeTheme;
+
+    if (isDarkMode) dark(oldTheme);
+    else light(oldTheme);
+    this.setState({ isDarkMode });
+    window.localStorage.setItem("mode", isDarkMode);
+    this.applyMode();
   };
 
   clearLocalStorage = () => {
@@ -78,15 +53,24 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    let gettodo = window.localStorage.getItem("todo");
-    if (gettodo) {
-      let todo = JSON.parse(gettodo);
-      this.setState({ todo });
+    let getmode = window.localStorage.getItem("mode");
+    if (getmode) {
+      let isDarkMode = JSON.parse(getmode);
+
+      const oldTheme = this.state.cutumeTheme;
+      if (isDarkMode) dark(oldTheme);
+      else light(oldTheme);
+      this.setState({ isDarkMode });
+      this.applyMode();
+    } else {
+      // dark mode by default
+      window.localStorage.setItem("mode", true);
     }
+    this.applyMode();
+
     configureAnchors({ scrollDuration: 0 });
   }
 
-  // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   render() {
     const { theme } = this;
     return (
@@ -98,14 +82,16 @@ export default class App extends Component {
         }}
       >
         <MuiThemeProvider theme={theme}>
-          {/* <MuiThemeProvider> */}
           <CssBaseline />
           <div
             className="App"
             style={{ background: theme.palette.background.default }}
           >
             <BrowserRouter basename={process.env.PUBLIC_URL}>
-              <Navbar themeChange={this.changeTheme} />
+              <Navbar
+                changeTheme={this.changeTheme}
+                isDarkMode={this.state.isDarkMode}
+              />
 
               <Switch>
                 <Route exact path="/" render={props => <Home {...props} />} />

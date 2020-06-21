@@ -2,7 +2,6 @@
 // projects to the right -> click navigate to home then prjects
 // contact to the right -> click navigate to the home then contact
 import React from "react";
-// import Sidebar from "./Sidebar/Sidebar";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -11,37 +10,30 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
-
 import IconButton from "@material-ui/core/IconButton";
-
-import Dropdwon from "./components/Dropdown" 
+import Dropdwon from "./components/Dropdown";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 
-import Logo from "./logo.png";
+import LogoDark from "./logo-dark.png";
+import LogoLight from "./logo-light.svg";
+
 const useStyles = makeStyles(theme => ({
   logoContainer: {
     flexGrow: 1,
     justifyContent: "left"
   },
-  logo: { height: 58, margin: 3 },
+  logo: { height: 60, margin: 3 },
   nav: { background: theme.palette.navbar.default },
   study: {
     padding: "2px 10px",
     margin: 2,
     marginLeft: 5
-    // fontSize: "0.7rem",
   },
-  themeicon:{marginLeft:4}
-  //   "@media (max-width: 600px)": {
-  //     study: {
-  //       fontSize: "0.6rem",
-  //       padding: "2px 6px"
-  //     },
-  //     logoText: { fontSize: "0.8rem" },
-  //     logo:{
-  //       marginLeft:-10
-  //     }
-  //   }
+  themeicon: { marginLeft: 4 },
+  "@media (max-width: 600px)": {
+    logo:{height:45}
+  },
+
 }));
 
 function HideOnScroll(props) {
@@ -58,26 +50,43 @@ function HideOnScroll(props) {
   );
 }
 
-export default function Navbar({ props ,themeChange}) {
+export default function Navbar({ props, changeTheme, isDarkMode }) {
   const classes = useStyles();
   return (
     <div>
       <HideOnScroll {...props}>
         <AppBar color="transparent" className={classes.nav}>
-          <Toolbar className={classes.nav}>
+          <Toolbar>
             <div className={classes.logoContainer}>
-              <IconButton color="inherit" component={Link} to="/" size="large">
-                <img className={classes.logo} src={Logo} alt="Mahmoud Hammad" />
+              <IconButton onClick={()=>window.scrollTo(0, 0)} color="inherit" component={Link} to="/" size="large">
+                {isDarkMode ? (
+                  <img
+                  className={classes.logo}
+                  src={LogoDark}
+                  alt="Mahmoud Hammad"
+                />
+                ) : (
+                  <img
+                  className={classes.logo}
+                  src={LogoLight}
+                  alt="Mahmoud Hammad"
+                />
+                )}
               </IconButton>
             </div>
-           
+
             <Hidden smDown={true}>
               <Button
                 size="large"
                 className={classes.study}
                 color="primary"
-                component="a"
-                href="/#contact"
+                component={Link}
+                to={{
+                  pathname: "/",
+                  state: {
+                    scrollTo: "contact"
+                  }
+                }}
               >
                 contact
               </Button>
@@ -86,33 +95,31 @@ export default function Navbar({ props ,themeChange}) {
                 className={classes.study}
                 variant="outlined"
                 color="secondary"
-                component="a"
-                // href={`/${process.env.PUBLIC_URL}/#projects`}
-                href={`/#projects`}
+                component={Link}
+                to={{
+                  pathname: "/",
+                  state: {
+                    scrollTo: "projects"
+                  }
+                }}
               >
                 My Projects
               </Button>
             </Hidden>
 
-
             <IconButton
-                className={classes.themeicon}
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={themeChange}
-              >
-                <Brightness4Icon />
-              </IconButton>
-
+              className={classes.themeicon}
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={()=>changeTheme(!isDarkMode)}
+            >
+              <Brightness4Icon color="primary" />
+            </IconButton>
 
             <Hidden mdUp={true}>
-             
-
-             <Dropdwon/>
+              <Dropdwon />
             </Hidden>
-
-            
           </Toolbar>
         </AppBar>
       </HideOnScroll>
