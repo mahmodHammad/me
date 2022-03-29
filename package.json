@@ -10,6 +10,9 @@
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "glsl-noise": "0.0.0",
+    "glsl-rotate": "^1.1.0",
+    "gsap": "^3.9.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
@@ -17,7 +20,8 @@
     "react-scrollable-anchor": "^0.6.1",
     "react-swipeable": "^5.5.1",
     "source-map-explorer": "^2.4.2",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "three": "^0.139.0"
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",

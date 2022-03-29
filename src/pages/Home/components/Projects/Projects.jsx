@@ -43,7 +43,7 @@ export default function Navbar() {
   return (
     <div id="projects" className={classes.root}>
       <Typography variant="h1" gutterBottom className={classes.header}>
-        My Recent Work
+        My Recent Work (WILL BE UPDATED SOON)
       </Typography>
       <Typography className={classes.body}>
         Here are a few design projects I've worked on recently.

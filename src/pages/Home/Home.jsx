@@ -36,6 +36,6 @@ export default function Home(props) {
         <Projects />
       </Container>
       <Contact />
-    </div>
+      </div>
   );
 }

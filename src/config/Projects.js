@@ -3,10 +3,10 @@ export default [
     id: "moochub",
     date: 2020,
     img:
-      "https://scontent-hbe1-1.xx.fbcdn.net/v/t1.15752-9/98090955_239457410715513_5233658632201043968_n.png?_nc_cat=111&_nc_sid=b96e70&_nc_eui2=AeFs6hawnFVO52t6W4EM2Aa5Z2Hn5iY70mRnYefmJjvSZPrN0tQ0bnsgPwkG-CBaZnB-5vwfgfSDP0A6t1xnkQ0L&_nc_ohc=dQSkckIIb-oAX-9_4dL&_nc_ht=scontent-hbe1-1.xx&oh=303f65d3aeb9096404a903d4d7e1d0fc&oe=5F08C952",
+      "https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
     moreImg: [
-      "https://user-images.githubusercontent.com/41790090/82119925-99cb4680-9782-11ea-9bad-574b58ae39c7.jpg",
-      "https://user-images.githubusercontent.com/41790090/82119906-7bfde180-9782-11ea-922e-537e5678c7fd.jpg",
+      "https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png",
+      "https://undark.org/wp-content/uploads/2020/02/GettyImages-1199242002-1-scaled.jpg",
       "https://user-images.githubusercontent.com/41790090/82119976-0d6d5380-9783-11ea-9eaf-0b045e39b486.png",
       "https://user-images.githubusercontent.com/41790090/82120004-4ad1e100-9783-11ea-8ce4-7c140c116f1d.png",
       "https://user-images.githubusercontent.com/41790090/82120148-625d9980-9784-11ea-8706-a45b6374fbb5.jpg"
@@ -20,28 +20,10 @@ export default [
     Technologies: ["React", "Material-UI", "Firebase","Express.js", "HTML5", "CSS3","Javascript"]
   },
   {
-    id: "Pizza",
-    date: 2019,
-    img:
-      "https://scontent-hbe1-1.xx.fbcdn.net/v/t1.15752-9/97039241_974672406263278_8273356327888093184_n.png?_nc_cat=111&_nc_sid=b96e70&_nc_eui2=AeFzxf-h20kqFc_4eZMiqhBrB4P6s4LbSLQHg_qzgttItC7sJDdhBb0mUj1Cyp9lOBRKBrJYTqWfSxNFPb32PNKt&_nc_ohc=VGBoyCzVtCMAX-8Fig1&_nc_ht=scontent-hbe1-1.xx&oh=1701b5df59dda1eabef114d84e1087f8&oe=5F09CF0F",
-    moreImg: [
-      "https://user-images.githubusercontent.com/41790090/82119413-9fbf2880-977e-11ea-97d2-05e5bb4cc512.jpg"
-    ],
-
-    title: "Pizza restaurant",
-    body:
-      " Simple lightweight Responsive website for a fake Italian pizza website with a beautiful menu  , to demonstrate my skills on web development.",
-    links: {
-      gitHub: "https://github.com/mahmodHammad/pizza-Restaurent",
-      visit: "https://mahmodhammad.github.io/pizza-Restaurent/"
-    },
-    Technologies: ["HTML5", "CSS3", "JavaScript", "boostrap4", "jQuery"]
-  },
-  {
     id: "elitperl",
     date: 2018,
     img:
-      "https://scontent-hbe1-1.xx.fbcdn.net/v/t1.15752-9/96691443_564978627754404_6309108951241719808_n.png?_nc_cat=103&_nc_sid=b96e70&_nc_eui2=AeGFExnywlWZ5rN6xxyI3M1cclt6UdEcyZJyW3pR0RzJkn8kQagsLVi6zuHi6QqT0FN26ag1WJw5dzCUPil_fw9Y&_nc_ohc=tdcoBMTHQfcAX8lO2US&_nc_ht=scontent-hbe1-1.xx&oh=307e90a99f28f8b3a0feb1fac27780b8&oe=5F0A33C8",
+      "https://cdn.vox-cdn.com/thumbor/5hjeoXGrD-9dsTQC36Eh0ZeHQoE=/0x0:984x982/1200x0/filters:focal(0x0:984x982):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/22438212/Screen_Shot_2021_04_12_at_8.15.22_AM.png",
     moreImg: [
       "https://user-images.githubusercontent.com/41790090/82119767-6936dd00-9781-11ea-97ef-af246c15f63d.jpg"
     ],

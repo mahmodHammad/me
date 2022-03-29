@@ -140,7 +140,7 @@ export default function Navbar() {
           size="large"
           component="a"
           target="_blank"
-          href="https://drive.google.com/file/d/15BR-DvhbXCf3sPpDYb5T2j9k2J_wIUPD/view"
+          href="https://drive.google.com/file/d/195_eVEJFpZx9Gm52c_v3wOFid70xUL1m/view"
           startIcon={<PersonIcon  fontSize="large"/>}
         >
           My Resume

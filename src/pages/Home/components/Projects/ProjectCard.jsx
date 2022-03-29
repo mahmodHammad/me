@@ -30,7 +30,9 @@ const useStyles = makeStyles(theme => ({
   button: {
     margin: "0 6px"
   },
-  img: {},
+  img: {
+    height:400
+  },
   contentHeader: {
     color: theme.palette.txt.title,
   },
@@ -50,7 +52,7 @@ export default function Navbar({ info }) {
       xs={12}
       sm={9}
       md={6}
-      lg={4}
+      lg={5}
     >
       <Card className={classes.card}>
         <CardActionArea  onClick={()=>window.scrollTo(0, 0)} component={Link} to={`/project/${info.id}`}>

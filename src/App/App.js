@@ -9,8 +9,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 // My components --------------------------------
 import Navbar from "./../shared/Navbar/Navbar";
 import Footer from "./../shared/Footer/Footer";
+
 import Home from "../pages/Home/Home";
 import Projects from "../pages/Projects/Project";
+import Shader from "../shared/Shader/Shader"
 
 import { dark, light, defaultMode } from "../config/Themes";
 
@@ -81,6 +83,10 @@ export default class App extends Component {
           minHeight: "100vh"
         }}
       >
+        <div className="content"> 
+        <div className="layout__line"></div>
+        <div className="scroll__content"></div>
+        
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
           <div
@@ -94,14 +100,20 @@ export default class App extends Component {
               />
 
               <Switch>
+                {/* <Route exact path="/" render={props => <Shader />} /> */}
                 <Route exact path="/" render={props => <Home {...props} />} />
                 <Route exact path="/Project/:id" component={Projects} />
               </Switch>
               <Footer />
+
             </BrowserRouter>
           </div>
         </MuiThemeProvider>
+        </div>
+
       </div>
     );
   }
 }
+
+ 
