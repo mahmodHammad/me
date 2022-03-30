@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   btnContainer:{
+
   },
   body:{
     overflow:"hidden",
@@ -35,10 +36,8 @@ export default function Cat( ) {
   
   );
 
-  return (
-    <div className={classes.body}>
-        This is shader
-      <div ref={textInput} className="canvas"></div>  
-    </div>
+  return ( 
+      <div ref={textInput} className={classes.btnContainer}></div>  
+     
   );
 }

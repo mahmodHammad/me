@@ -3,7 +3,7 @@ import "./App.css";
 // installed components -------------------------
 import { configureAnchors } from "react-scrollable-anchor";
 // Mui Components -------------------------------
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
+import { MuiThemeProvider, createTheme } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 // My components --------------------------------
@@ -22,17 +22,16 @@ export default class App extends Component {
     isDarkMode: true
   };
   // init
-  theme = createMuiTheme({
+  theme = createTheme({
     palette: defaultMode
   });
 
   applyMode = () => {
     const isDarkMode = this.state.isDarkMode;
-
-    console.log("apppppppppppply", isDarkMode);
+ 
     let oldTheme = { ...this.state.cutumeTheme };
 
-    this.theme = createMuiTheme({
+    this.theme = createTheme({
       palette: this.state.cutumeTheme
     });
     this.setState({ cutumeTheme: oldTheme });
@@ -100,7 +99,7 @@ export default class App extends Component {
               />
 
               <Switch>
-                {/* <Route exact path="/" render={props => <Shader />} /> */}
+                <Route exact path="/" render={props => <Shader />} />
                 <Route exact path="/" render={props => <Home {...props} />} />
                 <Route exact path="/Project/:id" component={Projects} />
               </Switch>

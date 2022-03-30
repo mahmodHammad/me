@@ -58,7 +58,7 @@ export default function Navbar({ props, changeTheme, isDarkMode }) {
         <AppBar color="transparent" className={classes.nav}>
           <Toolbar>
             <div className={classes.logoContainer}>
-              <IconButton onClick={()=>window.scrollTo(0, 0)} color="inherit" component={Link} to="/" size="large">
+              <IconButton onClick={()=>window.scrollTo(0, 0)} color="inherit" component={Link} to="/" size="medium">
                 {isDarkMode ? (
                   <img
                   className={classes.logo}
