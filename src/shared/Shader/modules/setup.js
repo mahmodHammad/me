@@ -1,5 +1,22 @@
 import * as THREE from 'three'
+import * as dat from 'dat.gui';
+import GSAP from 'gsap'
+import SmoothScroll from './SmoothScroll'
+
+var canv = {
+  uFrequency: 1 ,
+  uAmplitude: 1,
+  uDensity: 1,
+  uStrength: 1,
+  uDeepPurple: 1,
+  uOpacity: 1,
+};
+
+// canv.uAmplitude = 3
+// canv.uDensity = 3
+
 var glsl = require('glslify')
+
 const vertexShader =glsl(`
 
 
@@ -155,11 +172,69 @@ void main() {
   vec3 color = cosPalette(distort, brightness, contrast, oscilation, phase);
 
   gl_FragColor = vec4(color, vDistortion);
-  gl_FragColor += vec4(0.0, 0.0, 0.00, min(uOpacity, 1.));
+  gl_FragColor += vec4(uDeepPurple, 0.0, 0.00, min(uOpacity, 1.));
 }
 `) 
 class ScrollStage {
-  constructor() {
+  constructor(target) {
+
+    this.scroll = {
+      height: 0,
+      limit: 0,
+      hard: 0,
+      soft: 0,
+      ease: 0.05,
+      normalized: 0, 
+      running: false
+    }
+
+  this.smoothScroll = new SmoothScroll({ 
+      element: this.element, 
+      viewport: this.viewport, 
+      scroll: this.scroll
+    })
+
+    this.mouse = {
+      x: 0,
+      y: 0
+    } 
+    this.settings = {
+      // vertex
+      uFrequency: {
+        start: 0,
+        end: 4
+      },
+      uAmplitude: {
+        start: 4,
+        end: 4
+      },
+      uDensity: {
+        start: 1,
+        end: 1
+      },
+      uStrength: {
+        start: 0,
+        end: 1.1
+      },
+      // fragment
+      uDeepPurple: {  // max 1
+        start: 1,
+        end: 0
+      },
+      uOpacity: { // max 1
+        start: .33,
+        end: .66
+      }
+    }
+    GSAP.defaults({
+      ease: 'power2',
+      duration: 6.6,
+      overwrite: true
+    })
+
+    
+
+    this.target = target
     this.element = document.querySelector('.content')
 
     this.viewport = {
@@ -187,6 +262,8 @@ class ScrollStage {
 
     this.update = this.update.bind(this)
 
+    this.updateScrollAnimations = this.updateScrollAnimations.bind(this)
+
     this.init()
   }
 
@@ -203,8 +280,33 @@ class ScrollStage {
    * STAGE
    */
   addCanvas() {
+        
+const gui = new dat.GUI();
+
+gui.add(canv, 'uFrequency', 0, 10);
+gui.add(canv, 'uAmplitude', 0, 10);
+gui.add(canv, 'uDensity', 0, 2);
+gui.add(canv, 'uStrength', 0, 10);
+gui.add(canv, 'uDeepPurple', 0, 1);
+gui.add(canv, 'uOpacity', 0, 1); 
+ 
+ 
+// gui.onChange(e=>console.log("HEYYY"))
+console.log("GUI",gui.__controllers) 
+
+
+gui.__controllers.forEach(c=>{
+  const name = c.property
+  c.onChange(e=>{
+    this.mesh.material.uniforms[name] = { value:e }
+    console.log("NOOO",e)
+  })
+  console.log("ccc",c)
+})
     this.canvas.classList.add('webgl')
-    document.body.appendChild(this.canvas)
+    this.target.appendChild(this.canvas)
+
+
   }
 
   addCamera() {
@@ -216,7 +318,7 @@ class ScrollStage {
    * OBJECT
    */
   addMesh() {
-    this.geometry = new THREE.IcosahedronGeometry(1, 64)
+    this.geometry = new THREE.IcosahedronGeometry(1.1, 40)
 
     this.material = new THREE.ShaderMaterial({
       wireframe: true,
@@ -225,13 +327,14 @@ class ScrollStage {
       vertexShader,
       fragmentShader,
       uniforms: {
-        uFrequency: { value: 1 },
-        uAmplitude: { value: 2 },
-        uDensity: { value: 1 },
-        uStrength: { value: 1 },
-        uDeepPurple: { value: 1 },
-        uOpacity: { value: 0.99}
+        uFrequency: { value: this.settings.uFrequency.start },
+        uAmplitude: { value: this.settings.uAmplitude.start },
+        uDensity: { value: this.settings.uDensity.start },
+        uStrength: { value: this.settings.uStrength.start },
+        uDeepPurple: { value: this.settings.uDeepPurple.start },
+        uOpacity: { value: this.settings.uOpacity.start }
       }
+    
     })
 
     this.mesh = new THREE.Mesh(this.geometry, this.material)
@@ -243,8 +346,53 @@ class ScrollStage {
    */
   addEventListeners() {
     window.addEventListener('resize', this.onResize.bind(this))
+    window.addEventListener('mousemove', this.onMouseMove.bind(this))
+    window.addEventListener('scroll', this.onScroll.bind(this))
+  }
+  onMouseMove(event) {
+    // play with it!
+    // enable / disable / change x, y, multiplier …
+
+    this.mouse.x = (event.clientX / this.viewport.width).toFixed(2) * 4
+    this.mouse.y = (event.clientY / this.viewport.height).toFixed(2) * 2
+
+    GSAP.to(this.mesh.material.uniforms.uFrequency, { value: this.mouse.x })
+    GSAP.to(this.mesh.material.uniforms.uAmplitude, { value: this.mouse.x })
+    GSAP.to(this.mesh.material.uniforms.uDensity, { value: this.mouse.y })
+    GSAP.to(this.mesh.material.uniforms.uStrength, { value: this.mouse.y/2 })
+    // GSAP.to(this.mesh.material.uniforms.uDeepPurple, { value: this.mouse.x })
+    // GSAP.to(this.mesh.material.uniforms.uOpacity, { value: this.mouse.y })
+
+    console.info(`X: ${this.mouse.x}  |  Y: ${this.mouse.y}`)
   }
 
+    /**
+   * SCROLL BASED ANIMATIONS
+   */
+     onScroll() {
+      this.scroll.normalized = (this.scroll.hard / this.scroll.limit).toFixed(1)
+  
+      if (!this.scroll.running) {
+        window.requestAnimationFrame(this.updateScrollAnimations)
+  
+        this.scroll.running = true
+      }
+    }
+    updateScrollAnimations() {
+      this.scroll.running = false
+  
+      GSAP.to(this.mesh.rotation, {
+        x: this.scroll.normalized * Math.PI
+      })
+  
+      for (const key in this.settings) {
+        if (this.settings[key].start !== this.settings[key].end) {
+          GSAP.to(this.mesh.material.uniforms[key], {
+            value: this.settings[key].start + this.scroll.normalized * (this.settings[key].end - this.settings[key].start)
+          })
+        }
+      }
+    }
   onResize() {
     this.viewport = {
       width: window.innerWidth,
@@ -260,6 +408,8 @@ class ScrollStage {
     this.camera.aspect = this.viewport.width / this.viewport.height
     this.camera.updateProjectionMatrix()
 
+    this.smoothScroll.onResize()
+    
     this.renderer.setSize(this.viewport.width, this.viewport.height)
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))  
   }
@@ -269,11 +419,13 @@ class ScrollStage {
    */
   update() {
     const elapsedTime = this.clock.getElapsedTime()
-
     this.mesh.rotation.y = elapsedTime * .05
     
+// canv.uStrength = 3
+    // console.log("canv",canv)
+    this.smoothScroll.update()
     this.render()
-
+    
     window.requestAnimationFrame(this.update) 
   }
 
@@ -281,10 +433,11 @@ class ScrollStage {
    * RENDER
    */
   render() {
+
     this.renderer.render(this.scene, this.camera)
   }  
 }
 
-export default ()=>{
-  new ScrollStage() 
+export default (canvasTarget)=>{
+  new ScrollStage(canvasTarget) 
 }

@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     overflow:"hidden",
     height:"100vh",
     width:"100vw",
-    // border:"1px solid red",
+    border:"1px solid red",
     background:"#555",
     display:"flex",
     alignItems:"center",
@@ -23,8 +23,8 @@ export default function Cat( ) {
   const classes = useStyles();
   const textInput = useRef(null);
   useEffect(() => {
-    ScrollStage()
-      const canvasTarget = textInput.current;
+    const canvasTarget = textInput.current;
+    ScrollStage(canvasTarget)
     //   sceneSetup(canvasTarget);
     return () => {
       // Anything in here is fired on component unmount.
@@ -37,7 +37,8 @@ export default function Cat( ) {
   );
 
   return ( 
-      <div ref={textInput} className={classes.btnContainer}></div>  
+      <div ref={textInput} className={classes.btnContainer}>
+      </div>  
      
   );
 }

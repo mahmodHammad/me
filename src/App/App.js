@@ -75,6 +75,8 @@ export default class App extends Component {
   render() {
     const { theme } = this;
     return (
+      <div className="content">  
+      <Shader />
       <div
         className="App"
         style={{
@@ -82,9 +84,7 @@ export default class App extends Component {
           minHeight: "100vh"
         }}
       >
-        <div className="content"> 
-        <div className="layout__line"></div>
-        <div className="scroll__content"></div>
+   
         
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
@@ -97,9 +97,7 @@ export default class App extends Component {
                 changeTheme={this.changeTheme}
                 isDarkMode={this.state.isDarkMode}
               />
-
-              <Switch>
-                <Route exact path="/" render={props => <Shader />} />
+              <Switch> 
                 <Route exact path="/" render={props => <Home {...props} />} />
                 <Route exact path="/Project/:id" component={Projects} />
               </Switch>

@@ -7,18 +7,17 @@ export default class {
     this.scroll = scroll
 
     this.elements = {
-      scrollContent: this.element.querySelector('.scroll__content')
+      scrollContent: document.querySelector('.App')
     }
   }
 
   setSizes() {
-    console.log(this.element)
     this.scroll.height = this.elements.scrollContent.getBoundingClientRect().height
     this.scroll.limit = this.elements.scrollContent.clientHeight - this.viewport.height
 
     document.body.style.height = `${this.scroll.height}px`
   }
-  
+
   update() {
     this.scroll.hard = window.scrollY
     this.scroll.hard = GSAP.utils.clamp(0, this.scroll.limit, this.scroll.hard)
@@ -27,7 +26,7 @@ export default class {
     if (this.scroll.soft < 0.01) {
       this.scroll.soft = 0
     }
-    
+
     this.elements.scrollContent.style.transform = `translateY(${-this.scroll.soft}px)`
   }    
 
@@ -36,7 +35,7 @@ export default class {
       width: window.innerWidth,
       height: window.innerHeight
     }
-    
+
     this.setSizes()
   }
 }
