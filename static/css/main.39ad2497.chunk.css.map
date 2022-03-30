@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACI,gCACJ,CACA,KACI,sBACJ,CACA,OACI,cAGJ","file":"main.39ad2497.chunk.css","sourcesContent":[".App{\r\n    font-family: eurostile, sans-serif;\r\n}\r\nhtml{\r\n    scroll-behavior: smooth;\r\n}\r\ncanvas{\r\n    position: fixed;\r\n    /* top: 100px; */\r\n    /* z-index: -1 !important; */\r\n}"]}

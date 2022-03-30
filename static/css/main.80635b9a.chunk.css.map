@@ -1,1 +1,0 @@
-{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACI,gCACJ,CACA,KACI,sBACJ","file":"main.80635b9a.chunk.css","sourcesContent":[".App{\n    font-family: eurostile, sans-serif;\n}\nhtml{\n    scroll-behavior: smooth;\n}"]}
