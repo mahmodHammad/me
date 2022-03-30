@@ -243,7 +243,7 @@ class ScrollStage {
     }
 
     this.scene = new THREE.Scene()
-
+    this.scene.background = new THREE.Color("#222")
     this.renderer = new THREE.WebGLRenderer({ 
       antialias: true, 
       alpha: true 

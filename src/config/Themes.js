@@ -1,7 +1,7 @@
 const dark = oldTheme => {
   oldTheme.primary.main = "#eee";
   oldTheme.navbar.default = "#111";
-  oldTheme.background.default = "#333";
+  oldTheme.background.default = "#3330";
   oldTheme.secondary.main = "#FFa409";
   oldTheme.card.bg = "#111";
   oldTheme.contact.bg = "#111";
@@ -17,7 +17,7 @@ const dark = oldTheme => {
 const light = oldTheme => {
   oldTheme.primary.main = "#333";
   oldTheme.navbar.default = "#fff";
-  oldTheme.background.default = "#fafafa";
+  oldTheme.background.default = "#fafafa00";
   oldTheme.secondary.main = "#F89500";
   oldTheme.card.bg = "#fff";
   oldTheme.contact.bg = "#f1f1f1";
@@ -42,7 +42,7 @@ const defaultMode = {
     contrastText: "#000"
   },
   background: {
-    default: "#333"
+    default: "#3330"
   },
   txt: {
     title: "#fff",
