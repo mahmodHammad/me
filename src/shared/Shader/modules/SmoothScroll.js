@@ -15,7 +15,7 @@ export default class {
     this.scroll.height = this.elements.scrollContent.getBoundingClientRect().height
     this.scroll.limit = this.elements.scrollContent.clientHeight - this.viewport.height
 
-    document.body.style.height = `${this.scroll.height}px`
+    // document.body.style.height = `${this.scroll.height}px`
   }
 
   update() {

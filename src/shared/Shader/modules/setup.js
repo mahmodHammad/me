@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import * as dat from 'dat.gui';
+// import * as dat from 'dat.gui';
 import GSAP from 'gsap'
 import SmoothScroll from './SmoothScroll'
 
@@ -281,28 +281,28 @@ class ScrollStage {
    */
   addCanvas() {
         
-const gui = new dat.GUI();
+// const gui = new dat.GUI();
 
-gui.add(canv, 'uFrequency', 0, 10);
-gui.add(canv, 'uAmplitude', 0, 10);
-gui.add(canv, 'uDensity', 0, 2);
-gui.add(canv, 'uStrength', 0, 10);
-gui.add(canv, 'uDeepPurple', 0, 1);
-gui.add(canv, 'uOpacity', 0, 1); 
+// gui.add(canv, 'uFrequency', 0, 10);
+// gui.add(canv, 'uAmplitude', 0, 10);
+// gui.add(canv, 'uDensity', 0, 2);
+// gui.add(canv, 'uStrength', 0, 10);
+// gui.add(canv, 'uDeepPurple', 0, 1);
+// gui.add(canv, 'uOpacity', 0, 1); 
  
  
-// gui.onChange(e=>console.log("HEYYY"))
-console.log("GUI",gui.__controllers) 
+// // gui.onChange(e=>console.log("HEYYY"))
+// console.log("GUI",gui.__controllers) 
 
 
-gui.__controllers.forEach(c=>{
-  const name = c.property
-  c.onChange(e=>{
-    this.mesh.material.uniforms[name] = { value:e }
-    console.log("NOOO",e)
-  })
-  console.log("ccc",c)
-})
+// gui.__controllers.forEach(c=>{
+//   const name = c.property
+//   c.onChange(e=>{
+//     this.mesh.material.uniforms[name] = { value:e }
+//     console.log("NOOO",e)
+//   })
+//   console.log("ccc",c)
+// })
     this.canvas.classList.add('webgl')
     this.target.appendChild(this.canvas)
 
@@ -318,7 +318,7 @@ gui.__controllers.forEach(c=>{
    * OBJECT
    */
   addMesh() {
-    this.geometry = new THREE.IcosahedronGeometry(1.1, 40)
+    this.geometry = new THREE.IcosahedronGeometry(0.6, 40)
 
     this.material = new THREE.ShaderMaterial({
       wireframe: true,
@@ -338,7 +338,8 @@ gui.__controllers.forEach(c=>{
     })
 
     this.mesh = new THREE.Mesh(this.geometry, this.material)
-
+    this.mesh.position.x = 1
+    this.mesh.position.y = 0.6
     this.scene.add(this.mesh)
   }
   /**

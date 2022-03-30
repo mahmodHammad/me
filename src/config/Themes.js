@@ -3,11 +3,11 @@ const dark = oldTheme => {
   oldTheme.navbar.default = "#111";
   oldTheme.background.default = "#3330";
   oldTheme.secondary.main = "#FFa409";
-  oldTheme.card.bg = "#111";
-  oldTheme.contact.bg = "#111";
+  oldTheme.card.bg = "#111e";
+  oldTheme.contact.bg = "#111a";
   oldTheme.contact.methods = "#202020";
   oldTheme.contact.icons = "#FFC107";
-  oldTheme.footer.bg = "#171717";
+  oldTheme.footer.bg = "#171717bb";
   oldTheme.footer.cc = "#090909";
   oldTheme.txt.title = "#fff";
   oldTheme.txt.body = "#d9d9d9";
@@ -20,10 +20,10 @@ const light = oldTheme => {
   oldTheme.background.default = "#fafafa00";
   oldTheme.secondary.main = "#F89500";
   oldTheme.card.bg = "#fff";
-  oldTheme.contact.bg = "#f1f1f1";
+  oldTheme.contact.bg = "#f1f1f1aa";
   oldTheme.contact.methods = "#fbfbfb";
   oldTheme.contact.icons = "#ddd";
-  oldTheme.footer.bg = "#2b2b2b";
+  oldTheme.footer.bg = "#2b2b2baa";
   oldTheme.footer.cc = "#222";
   oldTheme.txt.title = "#fff";
   oldTheme.txt.body = "#aaa";
