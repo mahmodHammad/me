@@ -321,9 +321,14 @@ module.exports = function(webpackEnv) {
     module: {
       strictExportPresence: true,
       rules: [
-        // Disable require.ensure as it's not a standard language feature.
-        { parser: { requireEnsure: false } },
-
+        {
+          test: /\.(glsl|vs|fs|vert|frag)$/,
+          exclude: /node_modules/,
+          use: [
+            'raw-loader',
+            'glslify-loader'
+          ]
+        },
         // First, run the linter.
         // It's important to do this before Babel processes the JS.
         {
